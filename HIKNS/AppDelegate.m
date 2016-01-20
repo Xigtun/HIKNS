@@ -8,7 +8,18 @@
 
 #import "AppDelegate.h"
 
+#import <Firebase/Firebase.h>
+
+#import <QuartzCore/QuartzCore.h>
+#import <MMDrawerController/MMDrawerController.h>
+
+#import "HNDataBaseManager.h"
+
+#import "HNMainTableViewController.h"
+#import "HNLeftViewController.h"
 @interface AppDelegate ()
+
+@property (nonatomic,strong) MMDrawerController * drawerController;
 
 @end
 
@@ -17,6 +28,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[HNDataBaseManager manager] prepareDataBase];
+    
+    HNMainTableViewController *mainController = [[HNMainTableViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainController];
+    [navigationController setRestorationIdentifier:@"MMExampleCenterNavigationControllerRestorationKey"];
+    HNLeftViewController *leftController = [[HNLeftViewController alloc] init];
+    UINavigationController *leftNavigationController = [[UINavigationController alloc] initWithRootViewController:leftController];
+    [leftNavigationController setRestorationIdentifier:@"MMExampleLeftNavigationControllerRestorationKey"];
+    
+    self.drawerController = [[MMDrawerController alloc]
+                             initWithCenterViewController:navigationController
+                             leftDrawerViewController:leftNavigationController
+                             rightDrawerViewController:nil];
+    self.drawerController.showsShadow = NO;
+    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
+    [self.drawerController setMaximumLeftDrawerWidth:160.0];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    [self.drawerController
+     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+//         MMDrawerControllerDrawerVisualStateBlock block;
+//         block = [[MMExampleDrawerVisualStateManager sharedManager]
+//                  drawerVisualStateBlockForDrawerSide:drawerSide];
+//         if(block){
+//             block(drawerController, drawerSide, percentVisible);
+//         }
+     }];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.drawerController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -26,12 +69,11 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [Firebase goOffline];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [Firebase goOnline];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
