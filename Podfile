@@ -4,9 +4,12 @@ platform :ios, '8.0'
   pod 'SDWebImage', '~>3.7'
   pod 'AFNetworking', '~> 2.6'
   pod 'Mantle'
+  pod "MTLFMDBAdapter"
   pod 'MJRefresh'
+  pod 'NSDate+TimeAgo'
+  pod 'ViewDeck'
   pod 'UIView+Positioning'
-  pod 'MMDrawerController'
+  pod 'TOWebViewController'
   pod 'Firebase', '>= 2.5.0'
   pod 'FMDB'
 # pod 'FMDB/FTS'   # FMDB with FTS

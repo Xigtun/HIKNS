@@ -11,11 +11,6 @@
 
 typedef void(^RequestHanlder)(id object, BOOL state);
 
-typedef NS_ENUM (NSInteger, requestState) {
-    requestError = 0,
-    requestSuccess = 1
-};
-
 @interface HNRequestManager : NSObject
 
 + (instancetype)manager;

@@ -7,8 +7,9 @@
 //
 
 #import <Mantle/Mantle.h>
+#import <MTLFMDBAdapter/MTLFMDBAdapter.h>
 
-@interface HNStoryModel : MTLModel <MTLJSONSerializing>
+@interface HNStoryModel : MTLModel <MTLJSONSerializing, MTLFMDBSerializing>
 
 @property (nonatomic, strong) NSNumber *storyID;
 @property (nonatomic, strong) NSNumber *time;
@@ -21,5 +22,7 @@
 @property (nonatomic, copy) NSString *author;
 
 @property (nonatomic, strong) NSArray *kids;
+
+@property (nonatomic, copy) NSString *kidsString;
 
 @end

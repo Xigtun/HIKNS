@@ -19,6 +19,7 @@
 		438A984A1C4F729500AFF433 /* HN.db in Resources */ = {isa = PBXBuildFile; fileRef = 438A98491C4F729500AFF433 /* HN.db */; };
 		438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A984C1C4F7D9800AFF433 /* HNStoryModel.m */; };
 		438A98501C4F9C4500AFF433 /* HNDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A984F1C4F9C4500AFF433 /* HNDataBaseManager.m */; };
+		438A985C1C50BFA100AFF433 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438A985B1C50BFA100AFF433 /* SafariServices.framework */; };
 		B4DE655AB4451F66E1A21EC3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A2DE8709E94FC81C227657 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		438A984C1C4F7D9800AFF433 /* HNStoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryModel.m; sourceTree = "<group>"; };
 		438A984E1C4F9C4500AFF433 /* HNDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDataBaseManager.h; sourceTree = "<group>"; };
 		438A984F1C4F9C4500AFF433 /* HNDataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDataBaseManager.m; sourceTree = "<group>"; };
+		438A985B1C50BFA100AFF433 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		B0CA40DE202D60E77F338FB4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B6116424DF9DDE518850E3AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B9A2DE8709E94FC81C227657 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				438A985C1C50BFA100AFF433 /* SafariServices.framework in Frameworks */,
 				B4DE655AB4451F66E1A21EC3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +87,7 @@
 		438A981C1C4F23E500AFF433 /* HIKNS */ = {
 			isa = PBXGroup;
 			children = (
+				438A98511C50761500AFF433 /* Vandor */,
 				438A98401C4F5DBF00AFF433 /* DataAccess */,
 				438A983F1C4F5DB800AFF433 /* Model */,
 				438A983E1C4F5DB300AFF433 /* View */,
@@ -150,6 +154,13 @@
 			name = DataAccess;
 			sourceTree = "<group>";
 		};
+		438A98511C50761500AFF433 /* Vandor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Vandor;
+			sourceTree = "<group>";
+		};
 		69EDD6C2ADCAE9E88CAD565D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +173,7 @@
 		7D94DE0A0985148C4AFD6C5C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				438A985B1C50BFA100AFF433 /* SafariServices.framework */,
 				B9A2DE8709E94FC81C227657 /* libPods.a */,
 			);
 			name = Frameworks;

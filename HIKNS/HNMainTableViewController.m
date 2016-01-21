@@ -7,14 +7,19 @@
 //
 
 #import "HNMainTableViewController.h"
-#import <MMDrawerController/MMDrawerBarButtonItem.h>
-#import <MMDrawerController/UIViewController+MMDrawerController.h>
+#import <ViewDeck/ViewDeck.h>
+#import <TOWebViewController/TOWebViewController.h>
+#import <SafariServices/SafariServices.h>
 
 #import "HNRequestManager.h"
+#import "HNDataBaseManager.h"
+
 #import "HNMainTableViewCell.h"
 
-@interface HNMainTableViewController()
+@interface HNMainTableViewController() <SFSafariViewControllerDelegate>
+
 @property (nonatomic, strong) NSMutableArray *stories;
+
 @end
 
 @implementation HNMainTableViewController
@@ -31,6 +36,8 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     self.tableView.estimatedRowHeight = 150;
     self.tableView.tableFooterView = [UIView new];
     
+//    [[HNDataBaseManager manager] getStoryByID:@10942314];
+    
     @weakify(self);
     [[HNRequestManager manager] getNewStoryIDs:^(id object, BOOL state) {
         @strongify(self);
@@ -44,13 +51,13 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 }
 
 -(void)setupLeftMenuButton{
-    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"left" style:UIBarButtonItemStylePlain target:self.viewDeckController action:@selector(toggleLeftView)];
 }
 
--(void)leftDrawerButtonPress:(id)sender{
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+- (void)previewBounceLeftView {
+    [self.viewDeckController previewBounceView:IIViewDeckLeftSide];
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -66,5 +73,21 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    HNStoryModel *story = self.stories[indexPath.row];
+    NSURL *url = [NSURL URLWithString:story.originPath];
+//    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+//    svc.delegate = self;
+//    [self presentViewController:svc animated:YES completion:nil];
+    TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURL:url];
+    [self.navigationController pushViewController:webViewController animated:YES];
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
 
 @end

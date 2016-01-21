@@ -24,6 +24,10 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"";
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
     
     self.titles = @[@"story", @"job", @"comment", @"poll", @"pollopt"];
     

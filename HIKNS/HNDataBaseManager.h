@@ -7,14 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HNStoryModel.h"
 
 @class FMDatabaseQueue;
+
 @interface HNDataBaseManager : NSObject
 
-@property (nonatomic, strong) FMDatabaseQueue *databaseQueue;
+@property (nonatomic, strong) FMDatabaseQueue *dbQueue;
 
 + (instancetype)manager;
 
 - (void)prepareDataBase;
+
+#pragma mark - Public
+
+- (NSMutableArray *)getStoryIDs;
+
+- (HNStoryModel *)getStoryByID:(NSNumber *)storyID;
+
+- (void)insertStory:(HNStoryModel *)story;
 
 @end

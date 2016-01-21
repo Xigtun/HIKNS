@@ -9,9 +9,9 @@
 #import "AppDelegate.h"
 
 #import <Firebase/Firebase.h>
+#import <IIViewDeckController.h>
 
 #import <QuartzCore/QuartzCore.h>
-#import <MMDrawerController/MMDrawerController.h>
 
 #import "HNDataBaseManager.h"
 
@@ -19,7 +19,7 @@
 #import "HNLeftViewController.h"
 @interface AppDelegate ()
 
-@property (nonatomic,strong) MMDrawerController * drawerController;
+//@property (nonatomic,strong) MMDrawerController * drawerController;
 
 @end
 
@@ -30,37 +30,29 @@
     // Override point for customization after application launch.
     [[HNDataBaseManager manager] prepareDataBase];
     
-    HNMainTableViewController *mainController = [[HNMainTableViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainController];
-    [navigationController setRestorationIdentifier:@"MMExampleCenterNavigationControllerRestorationKey"];
-    HNLeftViewController *leftController = [[HNLeftViewController alloc] init];
-    UINavigationController *leftNavigationController = [[UINavigationController alloc] initWithRootViewController:leftController];
-    [leftNavigationController setRestorationIdentifier:@"MMExampleLeftNavigationControllerRestorationKey"];
-    
-    self.drawerController = [[MMDrawerController alloc]
-                             initWithCenterViewController:navigationController
-                             leftDrawerViewController:leftNavigationController
-                             rightDrawerViewController:nil];
-    self.drawerController.showsShadow = NO;
-    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
-    [self.drawerController setMaximumLeftDrawerWidth:160.0];
-    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    
-    [self.drawerController
-     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-//         MMDrawerControllerDrawerVisualStateBlock block;
-//         block = [[MMExampleDrawerVisualStateManager sharedManager]
-//                  drawerVisualStateBlockForDrawerSide:drawerSide];
-//         if(block){
-//             block(drawerController, drawerSide, percentVisible);
-//         }
-     }];
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.drawerController;
+    
+    IIViewDeckController* deckController = [self generateControllerStack];
+    self.leftController = deckController.leftController;
+    self.centerController = deckController.centerController;
+    self.window.rootViewController = deckController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (IIViewDeckController*)generateControllerStack {
+    HNLeftViewController* leftController = [[HNLeftViewController alloc] init];
+    
+    UIViewController *centerController = [[HNMainTableViewController alloc] init];
+    centerController = [[UINavigationController alloc] initWithRootViewController:centerController];
+    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:centerController
+                                                                                    leftViewController:leftController
+                                                                                   rightViewController:nil];
+    deckController.leftSize = 210;
+    deckController.shadowEnabled = NO;
+    
+    [deckController disablePanOverViewsOfClass:NSClassFromString(@"_UITableViewHeaderFooterContentView")];
+    return deckController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

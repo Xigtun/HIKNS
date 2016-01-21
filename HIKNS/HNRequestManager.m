@@ -8,6 +8,7 @@
 
 #import "HNRequestManager.h"
 #import <Firebase/Firebase.h>
+#import "HNDataBaseManager.h"
 
 @implementation HNRequestManager
 
@@ -56,6 +57,8 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
         [storyDescriptionRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
             NSDictionary *responseDictionary = snapshot.value;
             HNStoryModel *story = [MTLJSONAdapter modelOfClass:[HNStoryModel class] fromJSONDictionary:responseDictionary error:nil];
+            [[HNDataBaseManager manager] insertStory:story];
+            
             [storyModels addObject:story];
             if (storyModels.count == storyIDs.count) {
                 complete(storyModels, requestSuccess);

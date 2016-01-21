@@ -10,6 +10,7 @@
 
 @implementation HNStoryModel
 
+#pragma mark - Network
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return @{
@@ -40,6 +41,32 @@
     }
     
     return [modifiedDictionaryValue copy];
+}
+
+
+#pragma mark - Database
++ (NSDictionary *)FMDBColumnsByPropertyKey
+{
+    return @{
+             @"storyID" : @"id",
+             @"kidsString" : @"kids",
+             @"originPath" : @"url",
+             @"score" : @"score",
+             @"descendants" : @"comment_count",
+             @"author" : @"author",
+             @"type" : @"type",
+             @"time" : @"time",
+             @"title" : @"title",
+             };
+}
+
++ (NSArray *)FMDBPrimaryKeys
+{
+    return @[@"id", @"type"];
+}
+
++ (NSString *)FMDBTableName {
+    return @"stories";
 }
 
 @end
