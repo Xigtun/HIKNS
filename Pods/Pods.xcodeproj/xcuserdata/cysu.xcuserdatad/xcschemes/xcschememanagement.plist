@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FDFullscreenPopGesture.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,6 +59,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TLYShyNavBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TOWebViewController-TOWebViewControllerLocalizable.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,6 +92,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2C71DE0FB8A6E5BB6EAF9FB037D799CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
 		<dict>
 			<key>primary</key>
@@ -97,22 +112,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>75768978578227713C9DD45DE755D7AE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8E6778A1A552F37DB5F6F3CD8383E719</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>8F74D9EA91F4C43190670066BAC37D44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C47D14AFB98C700F248F3E689B0BDC4</key>
+		<key>9D71BE54F1EBCC151C4F0D7420E0DD2B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,12 +127,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BFD3F1AD32DBFA28775F5C6F1A37624C</key>
+		<key>A2AE8C2DCDE59DE995D660FDC667FBBB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C5EB144B4AB2CCD0CEB376F8D956B761</key>
+		<key>B3E8814BD813EE15FEC9EF12AF8F816B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CFD1F2B5B0EBCB12E244FFAC7BCD3A13</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D0044FA0240E78ED69BFA7922A9E650C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DADE52AAB38B6F92A47EDBE9927FE6C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,7 +157,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F7D1463E55469B42087A56DB2BB0754F</key>
+		<key>F56417835884DB3AF8D3F6BBA143003E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -14,4 +14,8 @@
 
 #endif /* HNPrefix_pch */
 
-#import "Constant.h"
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "HNMacro.h"
+#endif

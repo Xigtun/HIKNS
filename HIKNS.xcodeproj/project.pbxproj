@@ -20,6 +20,7 @@
 		438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A984C1C4F7D9800AFF433 /* HNStoryModel.m */; };
 		438A98501C4F9C4500AFF433 /* HNDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A984F1C4F9C4500AFF433 /* HNDataBaseManager.m */; };
 		438A985C1C50BFA100AFF433 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438A985B1C50BFA100AFF433 /* SafariServices.framework */; };
+		438A98821C51B63300AFF433 /* HNCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98811C51B63300AFF433 /* HNCenterViewController.m */; };
 		B4DE655AB4451F66E1A21EC3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A2DE8709E94FC81C227657 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +41,6 @@
 		438A98421C4F5E2D00AFF433 /* HNMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNMainTableViewCell.h; sourceTree = "<group>"; };
 		438A98431C4F5E2D00AFF433 /* HNMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNMainTableViewCell.m; sourceTree = "<group>"; };
 		438A98441C4F5E2D00AFF433 /* HNMainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNMainTableViewCell.xib; sourceTree = "<group>"; };
-		438A98471C4F6AE000AFF433 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		438A98481C4F6BFB00AFF433 /* HNPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNPrefix.pch; sourceTree = "<group>"; };
 		438A98491C4F729500AFF433 /* HN.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = HN.db; sourceTree = "<group>"; };
 		438A984B1C4F7D9800AFF433 /* HNStoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryModel.h; sourceTree = "<group>"; };
@@ -48,6 +48,9 @@
 		438A984E1C4F9C4500AFF433 /* HNDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDataBaseManager.h; sourceTree = "<group>"; };
 		438A984F1C4F9C4500AFF433 /* HNDataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDataBaseManager.m; sourceTree = "<group>"; };
 		438A985B1C50BFA100AFF433 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		438A98801C51B63300AFF433 /* HNCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCenterViewController.h; sourceTree = "<group>"; };
+		438A98811C51B63300AFF433 /* HNCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCenterViewController.m; sourceTree = "<group>"; };
+		438A98891C51D66800AFF433 /* HNMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNMacro.h; sourceTree = "<group>"; };
 		B0CA40DE202D60E77F338FB4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B6116424DF9DDE518850E3AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B9A2DE8709E94FC81C227657 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,10 +103,11 @@
 		438A981D1C4F23E500AFF433 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				438A98831C51B95600AFF433 /* UnUse */,
 				438A98491C4F729500AFF433 /* HN.db */,
 				438A98201C4F23E500AFF433 /* AppDelegate.h */,
 				438A98211C4F23E500AFF433 /* AppDelegate.m */,
-				438A98471C4F6AE000AFF433 /* Constant.h */,
+				438A98891C51D66800AFF433 /* HNMacro.h */,
 				438A98481C4F6BFB00AFF433 /* HNPrefix.pch */,
 				438A98291C4F23E500AFF433 /* Assets.xcassets */,
 				438A982B1C4F23E500AFF433 /* LaunchScreen.storyboard */,
@@ -116,8 +120,8 @@
 		438A983D1C4F5DAD00AFF433 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				438A98341C4F2E7600AFF433 /* HNMainTableViewController.h */,
-				438A98351C4F2E7600AFF433 /* HNMainTableViewController.m */,
+				438A98801C51B63300AFF433 /* HNCenterViewController.h */,
+				438A98811C51B63300AFF433 /* HNCenterViewController.m */,
 				438A98371C4F2FC600AFF433 /* HNLeftViewController.h */,
 				438A98381C4F2FC600AFF433 /* HNLeftViewController.m */,
 			);
@@ -159,6 +163,15 @@
 			children = (
 			);
 			name = Vandor;
+			sourceTree = "<group>";
+		};
+		438A98831C51B95600AFF433 /* UnUse */ = {
+			isa = PBXGroup;
+			children = (
+				438A98341C4F2E7600AFF433 /* HNMainTableViewController.h */,
+				438A98351C4F2E7600AFF433 /* HNMainTableViewController.m */,
+			);
+			name = UnUse;
 			sourceTree = "<group>";
 		};
 		69EDD6C2ADCAE9E88CAD565D /* Pods */ = {
@@ -305,6 +318,7 @@
 				438A98361C4F2E7600AFF433 /* HNMainTableViewController.m in Sources */,
 				438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */,
 				438A98391C4F2FC600AFF433 /* HNLeftViewController.m in Sources */,
+				438A98821C51B63300AFF433 /* HNCenterViewController.m in Sources */,
 				438A983C1C4F3E4600AFF433 /* HNRequestManager.m in Sources */,
 				438A98501C4F9C4500AFF433 /* HNDataBaseManager.m in Sources */,
 				438A98451C4F5E2D00AFF433 /* HNMainTableViewCell.m in Sources */,

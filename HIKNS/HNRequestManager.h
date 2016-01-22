@@ -15,6 +15,6 @@ typedef void(^RequestHanlder)(id object, BOOL state);
 
 + (instancetype)manager;
 
-- (void)getNewStoryIDs:(RequestHanlder)complete;
+- (void)getNewStoryIDsWithKind:(RequestKind)kind hanlder:(RequestHanlder)complete;
 
 @end

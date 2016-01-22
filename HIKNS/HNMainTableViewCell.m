@@ -28,12 +28,12 @@
         self.author.text = story.author;
         self.title.text = story.title;
         self.commentCount.text = story.descendants.stringValue;
-        self.originPath.text = story.originPath;
+        self.originPath.text = [self extractDomain:story.originPath];
         
         NSDate *storyDate = [NSDate dateWithTimeIntervalSince1970:story.time.doubleValue];
         NSString *dateDescribe = [storyDate dateTimeAgo];
         
-        NSString *showString = [NSString stringWithFormat:@"%@   %@ score", dateDescribe, story.score];
+        NSString *showString = [NSString stringWithFormat:@"%@   %@ points", dateDescribe, story.score];
         self.timeAndPoint.text = showString;
     } else {
         self.type.text = @"";
@@ -56,6 +56,18 @@
     self.timeAndPoint.text = @"";
 }
 
+- (NSString *)extractDomain:(NSString *)fullPath
+{
+    
+    // Convert the string to an NSURL to take advantage of NSURL's parsing abilities.
+    NSURL * url = [NSURL URLWithString:fullPath];
+    
+    // Get the host, e.g. "secure.twitter.com"
+    NSString * host = [url host];
+//    host = [host stringByReplacingOccurrencesOfString:@"www." withString:@""];
+    return host;
+    
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - FDFullscreenPopGesture (1.1)
   - Firebase (2.5.0)
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
@@ -33,9 +34,10 @@ PODS:
     - FMDB (~> 2.3)
     - Mantle (~> 2.0)
   - NSDate+TimeAgo (1.0.3)
-  - SDWebImage (3.7.4):
-    - SDWebImage/Core (= 3.7.4)
-  - SDWebImage/Core (3.7.4)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - TLYShyNavBar (1.0.0)
   - TOWebViewController (2.2.2):
     - TOWebViewController/Core (= 2.2.2)
   - TOWebViewController/Core (2.2.2)
@@ -44,6 +46,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
+  - FDFullscreenPopGesture
   - Firebase (>= 2.5.0)
   - FMDB
   - Mantle
@@ -52,12 +55,14 @@ DEPENDENCIES:
   - MTLFMDBAdapter
   - NSDate+TimeAgo
   - SDWebImage (~> 3.7)
+  - TLYShyNavBar
   - TOWebViewController
   - UIView+Positioning
   - ViewDeck
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   Mantle: 299966b00759634931699f69cb6a30b9239b944d
@@ -65,7 +70,8 @@ SPEC CHECKSUMS:
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   MTLFMDBAdapter: 8957b2fdb61cbf93ddd8739641310f835777e490
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
-  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  TLYShyNavBar: d313a1c50c58cb7af744829120eaa33ca8a998ce
   TOWebViewController: 7250caf720b8b96b4f02bcff0fef168ae290a0d9
   UIView+Positioning: e93fe9e3186d1ed7d60e344aa12787911e902056
   ViewDeck: e4c744cb5383cbae40cf286c6e7246df33962020

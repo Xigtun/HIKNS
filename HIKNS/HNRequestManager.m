@@ -34,9 +34,28 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
     return manager;
 }
 
-- (void)getNewStoryIDs:(RequestHanlder)complete{
+- (void)getNewStoryIDsWithKind:(RequestKind)kind hanlder:(RequestHanlder)complete
+{
+    NSString *requestPath;
+    switch (kind) {
+        case RequestKindNews:
+            requestPath = kTopStories;
+            break;
+        case RequestKindAsk:
+            requestPath = kAskStories;
+            break;
+        case RequestKindShow:
+            requestPath = kShowStories;
+            break;
+        case RequestKindJobs:
+            requestPath = kJobStories;
+            break;
+        case RequestKindBest:
+            requestPath = kBestStories;
+            break;
+    }
     
-    Firebase *storiesIdEvent = [[Firebase alloc] initWithUrl:kTopStories];
+    Firebase *storiesIdEvent = [[Firebase alloc] initWithUrl:requestPath];
     @weakify(self);
     [storiesIdEvent observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
@@ -81,7 +100,6 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
         
         NSDictionary *responseDictionary = snapshot.value;
         NSLog(@"%@", responseDictionary);
-        
         
     } withCancelBlock:^(NSError *error) {
         

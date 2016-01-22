@@ -24,12 +24,11 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
+//    self.title = @"";
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.translucent = YES;
     
-    self.titles = @[@"story", @"job", @"comment", @"poll", @"pollopt"];
+    self.titles = @[@"  ", @"News", @"Ask", @"Show", @"Jobs", @"Best"];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = [UIView new];
@@ -54,6 +53,28 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row-1) {
+        case 0:
+            [self.delegate shouldRequestDataWithKind:RequestKindNews];
+            break;
+        case 1:
+            [self.delegate shouldRequestDataWithKind:RequestKindAsk];
+            break;
+        case 2:
+            [self.delegate shouldRequestDataWithKind:RequestKindShow];
+            break;
+        case 3:
+            [self.delegate shouldRequestDataWithKind:RequestKindJobs];
+            break;
+        case 4:
+            [self.delegate shouldRequestDataWithKind:RequestKindBest];
+            break;
+    }
+}
+
 - (UITableView *)tableView
 {
     if (!_tableView) {
@@ -63,6 +84,7 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
 //            frame.size.height = frame.size.height - 100;
             UITableView *tempTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
             tempTableView.backgroundColor = [UIColor whiteColor];
+            tempTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
             tempTableView.scrollEnabled = NO;
             tempTableView.delegate = self;
             tempTableView.dataSource = self;

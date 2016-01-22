@@ -14,12 +14,10 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HNDataBaseManager.h"
-
-#import "HNMainTableViewController.h"
+#import "HNCenterViewController.h"
+//#import "HNMainTableViewController.h"
 #import "HNLeftViewController.h"
 @interface AppDelegate ()
-
-//@property (nonatomic,strong) MMDrawerController * drawerController;
 
 @end
 
@@ -42,13 +40,14 @@
 
 - (IIViewDeckController*)generateControllerStack {
     HNLeftViewController* leftController = [[HNLeftViewController alloc] init];
-    
-    UIViewController *centerController = [[HNMainTableViewController alloc] init];
+//    UIViewController *centerController = [[HNMainTableViewController alloc] init];
+    UIViewController *centerController = [[HNCenterViewController alloc] init];
+
     centerController = [[UINavigationController alloc] initWithRootViewController:centerController];
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:centerController
                                                                                     leftViewController:leftController
                                                                                    rightViewController:nil];
-    deckController.leftSize = 210;
+//    deckController.leftSize = 210;
     deckController.shadowEnabled = NO;
     
     [deckController disablePanOverViewsOfClass:NSClassFromString(@"_UITableViewHeaderFooterContentView")];

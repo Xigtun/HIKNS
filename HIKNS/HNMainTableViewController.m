@@ -11,6 +11,8 @@
 #import <TOWebViewController/TOWebViewController.h>
 #import <SafariServices/SafariServices.h>
 
+
+
 #import "HNRequestManager.h"
 #import "HNDataBaseManager.h"
 
@@ -38,16 +40,16 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     
 //    [[HNDataBaseManager manager] getStoryByID:@10942314];
     
-    @weakify(self);
-    [[HNRequestManager manager] getNewStoryIDs:^(id object, BOOL state) {
-        @strongify(self);
-        if (state == requestSuccess) {
-            self.stories = [NSMutableArray arrayWithArray:object];
-            [self.tableView reloadData];
-        } else {
-            
-        }
-    }];
+//    @weakify(self);
+//    [[HNRequestManager manager] getNewStoryIDs:^(id object, BOOL state) {
+//        @strongify(self);
+//        if (state == requestSuccess) {
+//            self.stories = [NSMutableArray arrayWithArray:object];
+//            [self.tableView reloadData];
+//        } else {
+//            
+//        }
+//    }];
 }
 
 -(void)setupLeftMenuButton{

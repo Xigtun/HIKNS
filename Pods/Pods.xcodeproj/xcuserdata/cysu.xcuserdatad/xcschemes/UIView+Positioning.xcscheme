@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5D99A8B0EAA193F00F1021D6'
+               BlueprintIdentifier = '89D9DEDA47544D6AC4927007'
                BlueprintName = 'UIView+Positioning'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libUIView+Positioning.a'>

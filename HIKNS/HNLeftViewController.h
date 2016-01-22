@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HNLeftControllerDelegate <NSObject>
+@optional
+
+- (void)shouldRequestDataWithKind:(RequestKind)kind;
+
+@end
+
 @interface HNLeftViewController : UIViewController
+
+@property (nonatomic, weak) id<HNLeftControllerDelegate> delegate;
 
 @end
