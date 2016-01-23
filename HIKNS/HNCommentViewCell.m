@@ -8,6 +8,7 @@
 
 #import "HNCommentViewCell.h"
 #import <NSDate+TimeAgo.h>
+#import "Utils.h"
 
 @implementation HNCommentViewCell
 
@@ -23,13 +24,20 @@
 
 - (void)configureUI:(HNStoryModel *)story index:(NSInteger)index
 {
-    NSDate *storyDate = [NSDate dateWithTimeIntervalSince1970:story.time.doubleValue];
-    NSString *dateDescribe = [storyDate dateTimeAgo];
-    self.timeLabel.text = dateDescribe;
-    
-    self.authorName.text = story.author;
-    self.content.text = story.content;
-    self.commentCount.text = [NSString stringWithFormat:@"%ld", (long)index];
+    if ([story isKindOfClass:[HNStoryModel class]]) {
+        NSDate *storyDate = [NSDate dateWithTimeIntervalSince1970:story.time.doubleValue];
+        NSString *dateDescribe = [storyDate dateTimeAgo];
+        self.timeLabel.text = dateDescribe;
+        
+        self.authorName.text = story.author;
+        self.commentCount.text = [NSString stringWithFormat:@"%ld", (long)index+1];
+//        NSAttributedString *attributedString= [Utils convertHTMLToAttributedString:story.content];
+//        self.content.attributedText = attributedString;
+        NSString *plainString = [Utils convertHTMLToPlainString:story.content];
+        self.content.text = plainString;
+        [self setNeedsDisplay];
+        [self layoutIfNeeded];
+    }
 }
 
 - (void)prepareForReuse

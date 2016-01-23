@@ -10,6 +10,7 @@
 #import <NSDate+TimeAgo.h>
 #import <UIView+Positioning/UIView+Positioning.h>
 #import "HNCommentViewCell.h"
+#import "HNCommentTitleCell.h"
 #import "HNRequestManager.h"
 
 @interface HNCommentViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -17,10 +18,13 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *stories;
 
+
 @end
 
 @implementation HNCommentViewController
 static NSString *const kCellIdentifier = @"HNCommentViewCell";
+static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout=UIRectEdgeNone;
@@ -30,8 +34,9 @@ static NSString *const kCellIdentifier = @"HNCommentViewCell";
     // Do any additional setup after loading the view.
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:@"HNCommentViewCell" bundle:nil] forCellReuseIdentifier:kCellIdentifier];
-    self.tableView.estimatedRowHeight = 200;
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"HNCommentTitleCell" bundle:nil]
+         forCellReuseIdentifier:kTitleCellIdentifier];
+    self.tableView.estimatedRowHeight = 300;
     [self requestData];
 }
 
@@ -50,18 +55,33 @@ static NSString *const kCellIdentifier = @"HNCommentViewCell";
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.story.kids.count;
+    return section == 0 ? 1 : self.story.kids.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 300.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HNCommentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
-    
-    [cell configureUI:self.stories[indexPath.row] index:indexPath.row];
-    
-    return cell;
+    if (indexPath.section == 0) {
+        HNCommentTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:kTitleCellIdentifier];
+        [cell configureUIWithModel:self.story];
+        return cell;
+    } else {
+        HNCommentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+        [cell configureUI:self.stories[indexPath.row] index:indexPath.row];
+        return cell;
+    }
 }
+
 
 @end

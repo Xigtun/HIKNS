@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -43,31 +44,31 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6G-Ft-Gxk">
-                        <rect key="frame" x="10" y="26" width="300" height="132"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsC-4G-IPg">
+                        <rect key="frame" x="16" y="26" width="288" height="129"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="s6G-Ft-Gxk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="0Om-v6-TSt"/>
-                    <constraint firstItem="s6G-Ft-Gxk" firstAttribute="top" secondItem="o9g-Bi-HR1" secondAttribute="bottom" id="4ka-pR-vtx"/>
                     <constraint firstItem="o9g-Bi-HR1" firstAttribute="centerY" secondItem="FEs-ep-Szh" secondAttribute="centerY" id="5bZ-Ql-DFk"/>
                     <constraint firstItem="FEs-ep-Szh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="6OJ-Tc-XFc"/>
                     <constraint firstItem="BaP-9k-wZG" firstAttribute="centerY" secondItem="o9g-Bi-HR1" secondAttribute="centerY" id="DWB-6v-wDB"/>
-                    <constraint firstAttribute="bottom" secondItem="s6G-Ft-Gxk" secondAttribute="bottom" constant="8" id="Mgv-QQ-OmD"/>
+                    <constraint firstItem="JsC-4G-IPg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="IaS-gU-Jad"/>
                     <constraint firstItem="FEs-ep-Szh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="RWH-1C-jxx"/>
                     <constraint firstItem="o9g-Bi-HR1" firstAttribute="leading" secondItem="FEs-ep-Szh" secondAttribute="trailing" constant="5" id="d6O-hz-4ad"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="JsC-4G-IPg" secondAttribute="bottom" constant="3" id="eL3-ST-iam"/>
                     <constraint firstAttribute="trailing" secondItem="BaP-9k-wZG" secondAttribute="trailing" constant="8" id="iMo-Vy-bmy"/>
-                    <constraint firstAttribute="trailing" secondItem="s6G-Ft-Gxk" secondAttribute="trailing" constant="10" id="jzA-Ib-vI3"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="JsC-4G-IPg" secondAttribute="trailing" constant="8" id="jMc-ED-Ioz"/>
+                    <constraint firstItem="JsC-4G-IPg" firstAttribute="top" secondItem="o9g-Bi-HR1" secondAttribute="bottom" id="qAt-TK-6pZ"/>
                     <constraint firstItem="o9g-Bi-HR1" firstAttribute="height" secondItem="FEs-ep-Szh" secondAttribute="height" id="zCy-kx-O7U"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="authorName" destination="FEs-ep-Szh" id="fdJ-ce-APG"/>
                 <outlet property="commentCount" destination="BaP-9k-wZG" id="DWv-tY-ipS"/>
-                <outlet property="content" destination="s6G-Ft-Gxk" id="YEZ-Vl-ixv"/>
+                <outlet property="content" destination="JsC-4G-IPg" id="ZsM-ry-pkT"/>
                 <outlet property="timeLabel" destination="o9g-Bi-HR1" id="Glv-mN-J7G"/>
             </connections>
             <point key="canvasLocation" x="314" y="254.5"/>
