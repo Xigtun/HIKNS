@@ -76,9 +76,9 @@
 - (void)insertID:(NSArray *)storyIDs kind:(RequestKind)kind
 {
     [self.dbQueue inDatabase:^(FMDatabase *db) {
-        NSString *sql = @"";
         for (NSNumber *storyID in storyIDs) {
-            
+            NSString *sql = @"insert stories (id) values (?)";
+            [db executeUpdate:sql, storyID];
         }
     }];
 }

@@ -48,6 +48,7 @@
 //数组是否为空
 #define IsArrayEmpty(_ref)    (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) ||([(_ref) count] == 0))
 
+typedef void(^RequestHanlder)(id object, BOOL state);
 
 typedef NS_ENUM (NSInteger, requestState){
     requestError = 0,

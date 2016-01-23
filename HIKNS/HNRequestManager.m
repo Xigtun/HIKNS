@@ -60,6 +60,9 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
     [storiesIdEvent observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
         NSArray *storyIDs = [snapshot.value mutableCopy];
+        [[HNDataBaseManager manager] insertID:storyIDs kind:kind];
+        //获取100条数据 pass complete
+        
         NSLog(@"%@", storyIDs);
         
 //        [self getStoryDataByIDs:storyIDs hanlder:complete];

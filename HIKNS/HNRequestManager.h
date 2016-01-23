@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "HNStoryModel.h"
 
-typedef void(^RequestHanlder)(id object, BOOL state);
-
 @interface HNRequestManager : NSObject
 
 + (instancetype)manager;
