@@ -23,6 +23,8 @@
              @"type" : @"type",
              @"time" : @"time",
              @"title" : @"title",
+             @"content" : @"text",
+             @"parent" : @"parent",
              };
 }
 

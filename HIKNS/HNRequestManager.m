@@ -91,19 +91,4 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
     }
 }
 
-- (void)getStoryDataOfItem:(NSNumber *)itemNumber {
-    
-    NSString *urlString = [NSString stringWithFormat:@"https://hacker-news.firebaseio.com/v0/item/%@",itemNumber];
-    Firebase *storyDescriptionRef = [[Firebase alloc] initWithUrl:urlString];
-    
-    [storyDescriptionRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        
-        NSDictionary *responseDictionary = snapshot.value;
-        NSLog(@"%@", responseDictionary);
-        
-    } withCancelBlock:^(NSError *error) {
-        
-    }];
-}
-
 @end

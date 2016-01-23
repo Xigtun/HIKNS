@@ -17,6 +17,8 @@
 #import "HNDataBaseManager.h"
 #import "HNLeftViewController.h"
 #import "HNMainTableViewCell.h"
+#import "HNCommentViewController.h"
+
 @interface HNCenterViewController ()<SFSafariViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *stories;
@@ -63,7 +65,7 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 }
 
 -(void)setupLeftMenuButton{
-    self.viewDeckController.leftSize = 120;
+    self.viewDeckController.leftSize = 160;
     HNLeftViewController *leftController = (HNLeftViewController *)self.viewDeckController.leftController;
     leftController.delegate = self;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"left" style:UIBarButtonItemStylePlain target:self.viewDeckController action:@selector(toggleLeftView)];
@@ -90,20 +92,27 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.viewDeckController closeLeftView];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (IsArrayEmpty(self.stories)) {
         return;
     }
     HNStoryModel *story = self.stories[indexPath.row];
-    NSURL *url = [NSURL URLWithString:story.originPath];
-    
-    if(NSClassFromString(@"SFSafariViewController")) {
-        SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-        svc.delegate = self;
-        [self presentViewController:svc animated:YES completion:nil];
+    if (IsStringEmpty(story.originPath)) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"HNMain" bundle:nil];
+        HNCommentViewController *commentController = [storyBoard instantiateViewControllerWithIdentifier:@"HNCommentViewController"];
+        commentController.story = story;
+        [self.navigationController pushViewController:commentController animated:YES];
     } else {
-        TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURL:url];
-        [self.navigationController pushViewController:webViewController animated:YES];
+        NSURL *url = [NSURL URLWithString:story.originPath];
+        if(NSClassFromString(@"SFSafariViewController")) {
+            SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+            svc.delegate = self;
+            [self presentViewController:svc animated:YES completion:nil];
+        } else {
+            TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURL:url];
+            [self.navigationController pushViewController:webViewController animated:YES];
+        }
     }
 }
 
@@ -113,7 +122,6 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 
 - (void)shouldRequestDataWithKind:(RequestKind)kind;
 {
-//    [self.viewDeckController toggleLeftView];
     [self.viewDeckController closeLeftView];
     @weakify(self);
     [[HNRequestManager manager] getNewStoryIDsWithKind:kind hanlder:^(id object, BOOL state) {

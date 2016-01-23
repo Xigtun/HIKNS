@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Comment View Controller-->
+        <scene sceneID="Ptq-97-QFu">
+            <objects>
+                <viewController storyboardIdentifier="HNCommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kuJ-8H-IUB" customClass="HNCommentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lW5-Bm-diC"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Wj-Wo-wUL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7B1-oG-yz0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lKx-Ch-s4I">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="kuJ-8H-IUB" id="K6X-Kd-vGm"/>
+                                    <outlet property="delegate" destination="kuJ-8H-IUB" id="p5O-ot-XrX"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lKx-Ch-s4I" firstAttribute="top" secondItem="lW5-Bm-diC" secondAttribute="bottom" id="5bR-NZ-y5v"/>
+                            <constraint firstItem="2Wj-Wo-wUL" firstAttribute="top" secondItem="lKx-Ch-s4I" secondAttribute="bottom" id="NKB-Tj-OUA"/>
+                            <constraint firstAttribute="trailing" secondItem="lKx-Ch-s4I" secondAttribute="trailing" id="unt-pG-U10"/>
+                            <constraint firstItem="lKx-Ch-s4I" firstAttribute="leading" secondItem="7B1-oG-yz0" secondAttribute="leading" id="vaI-Sr-fyp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="lKx-Ch-s4I" id="vfD-qc-7xs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRn-Z9-ZDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="322" y="295"/>
+        </scene>
+    </scenes>
+</document>

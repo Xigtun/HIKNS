@@ -17,4 +17,6 @@ typedef void(^RequestHanlder)(id object, BOOL state);
 
 - (void)getNewStoryIDsWithKind:(RequestKind)kind hanlder:(RequestHanlder)complete;
 
+- (void)getStoryDataByIDs:(NSArray *)storyIDs hanlder:(RequestHanlder)complete;
+
 @end

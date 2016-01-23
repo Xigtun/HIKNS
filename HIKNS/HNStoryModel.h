@@ -20,6 +20,9 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *originPath;//url
 @property (nonatomic, copy) NSString *author;
+@property (nonatomic, copy) NSString *content;
+
+@property (nonatomic, strong) NSNumber *parent;
 
 @property (nonatomic, strong) NSArray *kids;
 
