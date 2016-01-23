@@ -73,12 +73,13 @@
     return story;
 }
 
-- (void)insertID:(NSNumber *)storyID
+- (void)insertID:(NSArray *)storyIDs kind:(RequestKind)kind
 {
     [self.dbQueue inDatabase:^(FMDatabase *db) {
-        NSString *sql = @"select * from stories where id = ?;";
-        [db executeUpdate:sql, storyID];
-
+        NSString *sql = @"";
+        for (NSNumber *storyID in storyIDs) {
+            
+        }
     }];
 }
 

@@ -61,7 +61,8 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
         @strongify(self);
         NSArray *storyIDs = [snapshot.value mutableCopy];
         NSLog(@"%@", storyIDs);
-        [self getStoryDataByIDs:storyIDs hanlder:complete];
+        
+//        [self getStoryDataByIDs:storyIDs hanlder:complete];
     } withCancelBlock:^(NSError *error) {
         complete(error, requestError);
     }];
