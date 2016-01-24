@@ -56,16 +56,15 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
     }
     
     Firebase *storiesIdEvent = [[Firebase alloc] initWithUrl:requestPath];
-    @weakify(self);
+//    @weakify(self);
     [storiesIdEvent observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        @strongify(self);
+//        @strongify(self);
         NSArray *storyIDs = [snapshot.value mutableCopy];
         [[HNDataBaseManager manager] insertID:storyIDs kind:kind];
         //获取100条数据 pass complete
+        NSArray *shortStories = [storyIDs subarrayWithRange:NSMakeRange(0, 100)];
+        [self getStoryDataByIDs:shortStories hanlder:complete];
         
-        NSLog(@"%@", storyIDs);
-        
-//        [self getStoryDataByIDs:storyIDs hanlder:complete];
     } withCancelBlock:^(NSError *error) {
         complete(error, requestError);
     }];

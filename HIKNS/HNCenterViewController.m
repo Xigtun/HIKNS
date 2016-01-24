@@ -123,6 +123,27 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 - (void)shouldRequestDataWithKind:(RequestKind)kind;
 {
     [self.viewDeckController closeLeftView];
+    NSString *title;
+    switch (kind) {
+        case RequestKindNews:
+            title = @"News";
+            break;
+        case RequestKindAsk:
+            title = @"Ask";
+            break;
+        case RequestKindShow:
+            title = @"Show";
+            break;
+        case RequestKindJobs:
+            title = @"Job";
+            break;
+        case RequestKindBest:
+            title = @"Best";
+            break;
+    }
+    
+    self.title = title;
+    
     @weakify(self);
     [[HNRequestManager manager] getNewStoryIDsWithKind:kind hanlder:^(id object, BOOL state) {
         @strongify(self);

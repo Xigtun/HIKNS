@@ -48,5 +48,7 @@
     </dict>
     <key>UIFileSharingEnabled</key>
     <true/>
+    <key>CFBundleDisplayName</key>
+    <string>HIKNS</string>
 </dict>
 </plist>
