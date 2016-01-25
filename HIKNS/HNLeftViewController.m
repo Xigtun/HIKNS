@@ -38,7 +38,8 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    CGFloat cellHeight = CGRectGetHeight([UIScreen mainScreen].bounds)/8;
+    return cellHeight;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -50,6 +51,26 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     cell.textLabel.text = self.titles[indexPath.row];
+    UIImage *image;
+    switch (indexPath.row) {
+        case 1:
+            image = [UIImage imageNamed:@"nav_news"];
+            break;
+        case 2:
+            image = [UIImage imageNamed:@"nav_ask"];
+            break;
+        case 3:
+            image = [UIImage imageNamed:@"nav_show"];
+            break;
+        case 4:
+            image = [UIImage imageNamed:@"nav_job"];
+            break;
+        case 5:
+            image = [UIImage imageNamed:@"nav_best"];
+            break;
+    }
+    cell.imageView.image = image;
+    
     return cell;
 }
 

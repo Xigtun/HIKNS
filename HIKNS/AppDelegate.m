@@ -32,9 +32,9 @@
 //    [NSURLCache setSharedURLCache:urlCache];
     [[HNDataBaseManager manager] prepareDataBase];
     
-    [MAThemeKit setupThemeWithPrimaryColor:[MAThemeKit colorWithHexString:@"f9f9f9"] secondaryColor:[UIColor blackColor] fontName:@"AppleSDGothicNeo-Regular" lightStatusBar:YES];
-    [UIButton appearance].tintColor = [UIColor blackColor];
-    
+    [MAThemeKit setupThemeWithPrimaryColor:[MAThemeKit colorWithHexString:@"f9f9f9"] secondaryColor:[UIColor blackColor] fontName:@"HelveticaNeue-Light" lightStatusBar:YES];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     IIViewDeckController* deckController = [self generateControllerStack];

@@ -13,6 +13,7 @@
 #import "HNCommentViewCell.h"
 #import "HNCommentTitleCell.h"
 #import "HNRequestManager.h"
+#import "UIViewController+HUD.h"
 
 @interface HNCommentViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -37,19 +38,36 @@ static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"HNCommentViewCell" bundle:nil] forCellReuseIdentifier:kCellIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"HNCommentTitleCell" bundle:nil]
          forCellReuseIdentifier:kTitleCellIdentifier];
-    self.tableView.estimatedRowHeight = 300;
+    self.tableView.estimatedRowHeight = 600;
     self.shyNavBarManager.scrollView = self.tableView;
     [self requestData];
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navi_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    self.title = self.story.title;
+}
+
+- (void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)requestData
 {
-    [[HNRequestManager manager] getStoryDataByIDs:self.story.kids hanlder:^(id object, BOOL state) {
-        if (state == requestSuccess) {
-            self.stories = [NSArray arrayWithArray:object];
-            [self.tableView reloadData];
-        }
-    }];
+    if (self.story.kids.count > 0) {
+        [self showHudWithMessage:@"Loading"];
+        @weakify(self);
+        [[HNRequestManager manager] getStoryDataByIDs:self.story.kids hanlder:^(id object, BOOL state) {
+            @strongify(self);
+            if (state == requestSuccess) {
+                [self hideHudWithSuccessMessage:@"Completed"];
+                self.stories = [NSArray arrayWithArray:object];
+                [self.tableView reloadData];
+            } else {
+                [self hideHudWithErrorMessage:@"Error"];
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,11 +85,6 @@ static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
     return section == 0 ? 1 : self.story.kids.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 300.0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -81,9 +94,14 @@ static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
     } else {
         HNCommentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
         [cell configureUI:self.stories[indexPath.row] index:indexPath.row];
+        
         return cell;
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 @end

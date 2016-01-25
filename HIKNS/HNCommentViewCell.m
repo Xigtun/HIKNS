@@ -24,7 +24,7 @@
 
 - (void)configureUI:(HNStoryModel *)story index:(NSInteger)index
 {
-    if ([story isKindOfClass:[HNStoryModel class]]) {
+    if (!IsStringEmpty(story.author)) {
         NSDate *storyDate = [NSDate dateWithTimeIntervalSince1970:story.time.doubleValue];
         NSString *dateDescribe = [storyDate dateTimeAgo];
         self.timeLabel.text = dateDescribe;
@@ -35,8 +35,11 @@
 //        self.content.attributedText = attributedString;
         NSString *plainString = [Utils convertHTMLToPlainString:story.content];
         self.content.text = plainString;
-        [self setNeedsDisplay];
-        [self layoutIfNeeded];
+    } else {
+        self.timeLabel.text = @"3 hours ago";
+        self.authorName.text = @"Weithl";
+        self.commentCount.text = [NSString stringWithFormat:@"%ld", (long)index+1];
+        self.content.text = @"hahhahaha";
     }
 }
 

@@ -140,13 +140,12 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     }];
 }
 
-
 -(void)setupLeftMenuButton{
-    self.viewDeckController.leftSize = 160;
+    self.viewDeckController.leftSize = 180;
     HNLeftViewController *leftController = (HNLeftViewController *)self.viewDeckController.leftController;
     leftController.delegate = self;
     UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 20)];
-    [leftButton setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"navi_menu"] forState:UIControlStateNormal];
     [leftButton addTarget:self.viewDeckController action:@selector(toggleLeftView) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
@@ -166,8 +165,10 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HNMainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
-    HNStoryModel *story = self.stories[indexPath.row];
-    [cell configureUI:story];
+    if (self.stories.count > 0) {
+        HNStoryModel *story = self.stories[indexPath.row];
+        [cell configureUI:story];
+    }
     
     return cell;
 }
@@ -203,7 +204,6 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
     [self dismissViewControllerAnimated:true completion:nil];
 }
-
 
 #pragma mark - HNLeftControllerDelegate
 - (void)shouldRequestDataWithKind:(RequestKind)kind;

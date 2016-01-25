@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>MAThemeKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -74,6 +79,11 @@
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
+		<key>Toast.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
 		<key>UIView+Positioning.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -107,12 +117,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4EBB6BFC5219DAB082866D447E6A1304</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>569735B422E0E4CEEFC5C6955AFDE3A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6FB4B948FAFE2AC997EF6434B8A92738</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>75768978578227713C9DD45DE755D7AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>760842497E736596E7E72CFAE54EE4CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,6 +167,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9FC2E0FCF67F320449B116C79FC9B9B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A2AE8C2DCDE59DE995D660FDC667FBBB</key>
 		<dict>
 			<key>primary</key>
@@ -152,7 +182,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B8671292CDCFF13324FE7CA675F6D87A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BFD3F1AD32DBFA28775F5C6F1A37624C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C44A8C3C47C0E9AEEC0CC4B7F729FF54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,12 +222,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>F077F7698F5C94427F2F9B2F89FA5E3C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F56417835884DB3AF8D3F6BBA143003E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F7D1463E55469B42087A56DB2BB0754F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F87DCE009D9F36D67E0003393D85EA82</key>
 		<dict>
 			<key>primary</key>
 			<true/>
