@@ -28,8 +28,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    NSURLCache *urlCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
-//    [NSURLCache setSharedURLCache:urlCache];
+    NSURLCache *urlCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
+    [NSURLCache setSharedURLCache:urlCache];
     [[HNDataBaseManager manager] prepareDataBase];
     
     [MAThemeKit setupThemeWithPrimaryColor:[MAThemeKit colorWithHexString:@"f9f9f9"] secondaryColor:[UIColor blackColor] fontName:@"HelveticaNeue-Light" lightStatusBar:YES];
