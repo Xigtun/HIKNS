@@ -25,8 +25,12 @@
 
 - (HNStoryModel *)getStoryByID:(NSNumber *)storyID;
 
+- (NSMutableArray *)getStoriesWithKind:(RequestKind)kind;
+
 - (void)insertID:(NSArray *)storyIDs kind:(RequestKind)kind;
 
-- (void)insertStory:(HNStoryModel *)story;
+- (void)insertStory:(HNStoryModel *)story kind:(RequestKind)kind;
+
+- (void)deleteAllData:(RequestKind)kind;
 
 @end

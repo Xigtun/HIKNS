@@ -56,18 +56,51 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
     }
     
     Firebase *storiesIdEvent = [[Firebase alloc] initWithUrl:requestPath];
-//    @weakify(self);
+    @weakify(self);
     [storiesIdEvent observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        @strongify(self);
+        @strongify(self);
         NSArray *storyIDs = [snapshot.value mutableCopy];
+        [[HNDataBaseManager manager] deleteAllData:kind];
         [[HNDataBaseManager manager] insertID:storyIDs kind:kind];
         //获取100条数据 pass complete
-        NSArray *shortStories = [storyIDs subarrayWithRange:NSMakeRange(0, 100)];
-        [self getStoryDataByIDs:shortStories hanlder:complete];
-        
+        [self getStoryDataByIDs:storyIDs kind:kind hanlder:complete];
     } withCancelBlock:^(NSError *error) {
         complete(error, requestError);
     }];
+}
+
+- (void)getStoryDataByIDs:(NSArray *)storyIDs kind:(RequestKind)kind hanlder:(RequestHanlder)complete
+{
+    NSArray *shortStories;
+    if (storyIDs.count > 100) {
+        shortStories = [storyIDs subarrayWithRange:NSMakeRange(0, MIN(100, storyIDs.count))];
+    } else {
+        shortStories = storyIDs;
+    }
+    NSMutableDictionary *mulitDict = [NSMutableDictionary dictionary];
+    [mulitDict setObject:storyIDs forKey:@"id"];
+    NSMutableArray *storyModels = [NSMutableArray array];
+    for (NSString *itemNumber in shortStories) {
+        NSString *urlString = [NSString stringWithFormat:@"https://hacker-news.firebaseio.com/v0/item/%@",itemNumber];
+        Firebase *storyDescriptionRef = [[Firebase alloc] initWithUrl:urlString];
+        [storyDescriptionRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSDictionary *responseDictionary = snapshot.value;
+            HNStoryModel *story = [MTLJSONAdapter modelOfClass:[HNStoryModel class] fromJSONDictionary:responseDictionary error:nil];
+            [[HNDataBaseManager manager] insertStory:story kind:kind];
+            
+            [storyModels addObject:story];
+            if (storyModels.count == shortStories.count) {
+                [mulitDict setObject:storyModels forKey:@"models"];
+                complete(mulitDict, requestSuccess);
+            }
+        } withCancelBlock:^(NSError *error) {
+            [storyModels addObject:error];
+            if (storyModels.count == storyIDs.count) {
+                [mulitDict setObject:storyModels forKey:@"models"];
+                complete(mulitDict, requestSuccess);
+            }
+        }];
+    }
 }
 
 - (void)getStoryDataByIDs:(NSArray *)storyIDs hanlder:(RequestHanlder)complete
@@ -79,7 +112,7 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
         [storyDescriptionRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
             NSDictionary *responseDictionary = snapshot.value;
             HNStoryModel *story = [MTLJSONAdapter modelOfClass:[HNStoryModel class] fromJSONDictionary:responseDictionary error:nil];
-            [[HNDataBaseManager manager] insertStory:story];
+//            [[HNDataBaseManager manager] insertStory:story];
             
             [storyModels addObject:story];
             if (storyModels.count == storyIDs.count) {

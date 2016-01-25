@@ -17,4 +17,6 @@
 
 - (void)getStoryDataByIDs:(NSArray *)storyIDs hanlder:(RequestHanlder)complete;
 
+- (void)getStoryDataByIDs:(NSArray *)storyIDs kind:(RequestKind)kind hanlder:(RequestHanlder)complete;
+
 @end

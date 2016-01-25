@@ -1,25 +1,4 @@
 PODS:
-  - AFNetworking (2.6.3):
-    - AFNetworking/NSURLConnection (= 2.6.3)
-    - AFNetworking/NSURLSession (= 2.6.3)
-    - AFNetworking/Reachability (= 2.6.3)
-    - AFNetworking/Security (= 2.6.3)
-    - AFNetworking/Serialization (= 2.6.3)
-    - AFNetworking/UIKit (= 2.6.3)
-  - AFNetworking/NSURLConnection (2.6.3):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.3):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.3)
-  - AFNetworking/Security (2.6.3)
-  - AFNetworking/Serialization (2.6.3)
-  - AFNetworking/UIKit (2.6.3):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
   - FDFullscreenPopGesture (1.1)
   - Firebase (2.5.0)
   - FMDB (2.6):
@@ -28,51 +7,50 @@ PODS:
   - Mantle (2.0.6):
     - Mantle/extobjc (= 2.0.6)
   - Mantle/extobjc (2.0.6)
+  - MAThemeKit (1.0)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.0)
   - MTLFMDBAdapter (0.2.0):
     - FMDB (~> 2.3)
     - Mantle (~> 2.0)
   - NSDate+TimeAgo (1.0.3)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
   - TLYShyNavBar (1.0.0)
-  - TOWebViewController (2.2.2):
-    - TOWebViewController/Core (= 2.2.2)
-  - TOWebViewController/Core (2.2.2)
+  - Toast (3.0)
+  - TOWebViewController (2.2.3):
+    - TOWebViewController/Core (= 2.2.3)
+  - TOWebViewController/Core (2.2.3)
   - UIView+Positioning (1.1)
   - ViewDeck (2.4.1)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.6)
   - FDFullscreenPopGesture
   - Firebase (>= 2.5.0)
   - FMDB
   - Mantle
+  - MAThemeKit
   - MBProgressHUD
   - MJRefresh
   - MTLFMDBAdapter
   - NSDate+TimeAgo
-  - SDWebImage (~> 3.7)
   - TLYShyNavBar
+  - Toast
   - TOWebViewController
   - UIView+Positioning
   - ViewDeck
 
 SPEC CHECKSUMS:
-  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   Mantle: 299966b00759634931699f69cb6a30b9239b944d
+  MAThemeKit: 559acc98ceadc051cccb1b6bb0c4ca28475eb021
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   MTLFMDBAdapter: 8957b2fdb61cbf93ddd8739641310f835777e490
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   TLYShyNavBar: d313a1c50c58cb7af744829120eaa33ca8a998ce
-  TOWebViewController: 7250caf720b8b96b4f02bcff0fef168ae290a0d9
+  Toast: 32c59229abfcf41850162b83bb9259dc84372473
+  TOWebViewController: ca47b9aeefe66acb3353d197dc8270338540b116
   UIView+Positioning: e93fe9e3186d1ed7d60e344aa12787911e902056
   ViewDeck: e4c744cb5383cbae40cf286c6e7246df33962020
 

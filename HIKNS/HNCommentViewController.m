@@ -9,6 +9,7 @@
 #import "HNCommentViewController.h"
 #import <NSDate+TimeAgo.h>
 #import <UIView+Positioning/UIView+Positioning.h>
+#import <TLYShyNavBar/TLYShyNavBarManager.h>
 #import "HNCommentViewCell.h"
 #import "HNCommentTitleCell.h"
 #import "HNRequestManager.h"
@@ -37,6 +38,7 @@ static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"HNCommentTitleCell" bundle:nil]
          forCellReuseIdentifier:kTitleCellIdentifier];
     self.tableView.estimatedRowHeight = 300;
+    self.shyNavBarManager.scrollView = self.tableView;
     [self requestData];
 }
 

@@ -50,7 +50,7 @@
 + (NSDictionary *)FMDBColumnsByPropertyKey
 {
     return @{
-             @"storyID" : @"id",
+             @"storyID" : @"story_id",
              @"kidsString" : @"kids",
              @"originPath" : @"url",
              @"score" : @"score",
@@ -64,7 +64,7 @@
 
 + (NSArray *)FMDBPrimaryKeys
 {
-    return @[@"id", @"type"];
+    return @[@"story_id", @"type"];
 }
 
 + (NSString *)FMDBTableName {

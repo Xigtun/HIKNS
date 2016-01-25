@@ -498,15 +498,20 @@
 #pragma mark - View Layout/Transitions -
 - (void)layoutButtonsForCurrentSizeClass
 {
-    if (!self.navigationButtonsHidden) {
-        [self.navigationController setToolbarHidden:(!self.compactPresentation) animated:NO];
-    }
+    [self.navigationController setToolbarHidden:(!self.compactPresentation || self.navigationButtonsHidden) animated:NO];
         
     //Reset the lot
     self.toolbarItems = nil;
     self.navigationItem.leftBarButtonItems = nil;
     self.navigationItem.rightBarButtonItems = nil;
+    self.navigationItem.leftItemsSupplementBackButton = NO;
     
+    //If we've got explicitly set application items in the navigation bar, set them up before handling screen cases
+    if (self.applicationLeftBarButtonItems) {
+        self.navigationItem.leftBarButtonItems = self.applicationLeftBarButtonItems;
+        self.navigationItem.leftItemsSupplementBackButton = YES;
+    }
+
     //Handle iPhone Layout
     if (self.compactPresentation) {
         
@@ -520,7 +525,9 @@
         if (self.navigationButtonsHidden && self.applicationBarButtonItems.count == 1) {
             // place on the left or right depending on the type of presentation
             if (self.beingPresentedModally) {
-                self.navigationItem.leftBarButtonItem = self.applicationBarButtonItems.firstObject;
+                if (!self.applicationLeftBarButtonItems) {
+                    self.navigationItem.leftBarButtonItem = self.applicationBarButtonItems.firstObject;
+                }
             }
             else {
                 self.navigationItem.rightBarButtonItem = self.applicationBarButtonItems.firstObject;
@@ -571,10 +578,11 @@
         
         return;
     }
-
+    
     //Handle iPad layout
     BOOL modal = self.beingPresentedModally;
-    NSMutableArray *leftItems = [NSMutableArray array];
+    NSMutableArray *leftItems = self.applicationLeftBarButtonItems ? [NSMutableArray arrayWithArray:self.navigationItem.leftBarButtonItems] : [NSMutableArray array];
+    
     NSMutableArray *rightItems = [NSMutableArray array];
     UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpace.width = NAVIGATION_ICON_SPACING;
@@ -758,6 +766,16 @@
     [self refreshButtonsState];
 }
 
+- (void)setApplicationLeftBarButtonItems:(NSArray *)applicationLeftBarButtonItems
+{
+    if (applicationLeftBarButtonItems == _applicationLeftBarButtonItems) {
+        return;
+    }
+    
+    _applicationLeftBarButtonItems = applicationLeftBarButtonItems;
+    [self refreshButtonsState];
+}
+
 #pragma mark -
 #pragma mark WebView Delegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -780,6 +798,12 @@
     
     //update the navigation bar buttons
     [self refreshButtonsState];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    if(self.didFinishLoadHandler){
+        self.didFinishLoadHandler(webView);
+    }
 }
 
 #pragma mark - Progress Delegate -
@@ -918,6 +942,10 @@
 #pragma mark Action Item Event Handlers
 - (void)actionButtonTapped:(id)sender
 {
+    //Do nothing if there is no url for action
+    if (!self.url) {
+        return;
+    }
     // If we're on iOS 6 or above, we can use the super-duper activity view controller :)
     if (NSClassFromString(@"UIPresentationController")) {
         NSArray *browserActivities = @[[TOActivitySafari new], [TOActivityChrome new]];

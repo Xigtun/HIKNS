@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */; };
 		438A981F1C4F23E500AFF433 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A981E1C4F23E500AFF433 /* main.m */; };
 		438A98221C4F23E500AFF433 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98211C4F23E500AFF433 /* AppDelegate.m */; };
 		438A982A1C4F23E500AFF433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438A98291C4F23E500AFF433 /* Assets.xcassets */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
+		437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		438A981A1C4F23E500AFF433 /* HIKNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIKNS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438A981E1C4F23E500AFF433 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		438A98201C4F23E500AFF433 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 		438A98511C50761500AFF433 /* Vandor */ = {
 			isa = PBXGroup;
 			children = (
+				437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */,
+				437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */,
 				438A98941C53530A00AFF433 /* Utils.h */,
 				438A98951C53530A00AFF433 /* Utils.m */,
 				438A98971C53531700AFF433 /* NSString+RemoveTag.h */,
@@ -352,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */,
 				438A98361C4F2E7600AFF433 /* HNMainTableViewController.m in Sources */,
 				438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */,
 				438A98991C53531700AFF433 /* NSString+RemoveTag.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "HNMainTableViewCell.h"
 #import <NSDate+TimeAgo.h>
+#import <UIView+Positioning.h>
 
 @implementation HNMainTableViewCell
 
@@ -27,14 +28,24 @@
         self.type.text = story.type;
         self.author.text = story.author;
         self.title.text = story.title;
-        self.commentCount.text = story.descendants.stringValue;
-        self.originPath.text = [self extractDomain:story.originPath];
+        if (IsStringEmpty(story.originPath)) {
+            self.timeAndPoint.centerY += 24;
+        } else {
+            self.originPath.text = [self extractDomain:story.originPath];
+        }
+        if ([story.type isEqualToString:@"job"]) {
+            self.commentCount.hidden = YES;
+        } else {
+            self.commentCount.text = story.descendants.stringValue;
+        }
         
         NSDate *storyDate = [NSDate dateWithTimeIntervalSince1970:story.time.doubleValue];
         NSString *dateDescribe = [storyDate dateTimeAgo];
         
         NSString *showString = [NSString stringWithFormat:@"%@   %@ points", dateDescribe, story.score];
         self.timeAndPoint.text = showString;
+        
+        [self layoutIfNeeded];
     } else {
         self.type.text = @"";
         self.author.text = @"";
@@ -48,6 +59,8 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
+    self.commentCount.hidden = NO;
+    
     self.type.text = @"";
     self.author.text = @"";
     self.title.text = @"";

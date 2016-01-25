@@ -8,6 +8,8 @@
 
 #import "HNCenterViewController.h"
 #import <ViewDeck/ViewDeck.h>
+#import <MJRefresh.h>
+#import <UIView+Toast.h>
 #import <TOWebViewController/TOWebViewController.h>
 #import <SafariServices/SafariServices.h>
 
@@ -18,15 +20,20 @@
 #import "HNLeftViewController.h"
 #import "HNMainTableViewCell.h"
 #import "HNCommentViewController.h"
+#import "UIViewController+HUD.h"
 
 @interface HNCenterViewController ()<SFSafariViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *stories;
+@property (nonatomic, strong) NSMutableArray *allStoryIDs;
+
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
 
-@implementation HNCenterViewController
+@implementation HNCenterViewController {
+    RequestKind p_currentKind;
+}
 
 
 static NSString *const kCellIdentifier = @"HNMainTableViewCell";
@@ -42,27 +49,97 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     self.tableView.estimatedRowHeight = 150;
     self.tableView.tableFooterView = [UIView new];
     
-    /* Library code */
-    self.shyNavBarManager.scrollView = self.tableView;
+    [self setupRefreshAction];
     
-    @weakify(self);
-    [[HNRequestManager manager] getNewStoryIDsWithKind:RequestKindNews hanlder:^(id object, BOOL state) {
-        @strongify(self);
-        if (state == requestSuccess) {
-            self.stories = [NSMutableArray arrayWithArray:object];
-            [self.tableView reloadData];
-        } else {
-            
-        }
-        
-    }];
+//    self.shyNavBarManager.scrollView = self.tableView;
+    self.stories = [[HNDataBaseManager manager] getStoriesWithKind:RequestKindNews];
+    [self.tableView reloadData];
+    
+    [self getNewestData:RequestKindNews];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.toolbar.hidden = YES;
+    self.navigationController.hidesBarsOnSwipe = YES;
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.hidesBarsOnSwipe = NO;
+}
+
+- (void)setupRefreshAction
+{
+    p_currentKind = RequestKindNews;
+    @weakify(self);
+    // 下拉刷新
+    self.tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self);
+        @weakify(self);
+        [[HNRequestManager manager] getNewStoryIDsWithKind:p_currentKind hanlder:^(id object, BOOL state) {
+            @strongify(self);
+            if (state == requestSuccess) {
+                NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
+                self.stories = [dictionary objectForKey:@"models"];
+                self.allStoryIDs = [dictionary objectForKey:@"id"];
+                [self.tableView reloadData];
+            } else {
+            }
+            [self.tableView.mj_header endRefreshing];
+        }];
+    }];
+    
+    // 设置自动切换透明度(在导航栏下面自动隐藏)
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+
+    // 上拉刷新
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        @strongify(self);
+        if (self.allStoryIDs.count <= self.stories.count) {
+            [self.view makeToast:@"There's no more data!" duration:0.5 position:CSToastPositionCenter];
+            [self.tableView.mj_footer endRefreshing];
+            return;
+        }
+        NSArray *requestStories = [self.allStoryIDs subarrayWithRange:NSMakeRange(MIN(self.stories.count, self.allStoryIDs.count), MIN(100, self.allStoryIDs.count - self.stories.count))];
+        @weakify(self);
+        [[HNRequestManager manager] getStoryDataByIDs:requestStories kind:p_currentKind hanlder:^(id object, BOOL state) {
+            @strongify(self);
+            if (state == requestSuccess) {
+                NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
+                NSArray *nextStories = [dictionary objectForKey:@"models"];
+                NSArray *tempArray = [self.stories arrayByAddingObjectsFromArray:nextStories];
+                self.stories = [NSMutableArray arrayWithArray:tempArray];
+            } else {
+            }
+            // 结束刷新
+            [self.tableView reloadData];
+            [self.tableView.mj_footer endRefreshing];
+        }];
+        
+    }];
+}
+
+- (void)getNewestData:(RequestKind)kind
+{
+    [self showHudWithMessage:@"Loading"];
+    @weakify(self);
+    [[HNRequestManager manager] getNewStoryIDsWithKind:kind hanlder:^(id object, BOOL state) {
+        @strongify(self);
+        if (state == requestSuccess) {
+            [self hideHudWithSuccessMessage:@"Completed"];
+            NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
+            self.stories = [dictionary objectForKey:@"models"];
+            self.allStoryIDs = [dictionary objectForKey:@"id"];
+            [self.tableView reloadData];
+        } else {
+            [self hideHudWithErrorMessage:@"Error"];
+        }
+    }];
+}
+
 
 -(void)setupLeftMenuButton{
     self.viewDeckController.leftSize = 160;
@@ -75,7 +152,7 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     [self.viewDeckController previewBounceView:IIViewDeckLeftSide];
 }
 
-
+#pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.stories.count ?: 100;
@@ -90,6 +167,7 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.viewDeckController closeLeftView];
@@ -116,12 +194,16 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     }
 }
 
+#pragma mark - SFSafariViewControllerDelegate
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+
+#pragma mark - HNLeftControllerDelegate
 - (void)shouldRequestDataWithKind:(RequestKind)kind;
 {
+    p_currentKind = kind;
     [self.viewDeckController closeLeftView];
     NSString *title;
     switch (kind) {
@@ -143,20 +225,25 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     }
     
     self.title = title;
-    
+    self.stories = [[HNDataBaseManager manager] getStoriesWithKind:kind];
+    [self.tableView reloadData];
+    [self showHudWithMessage:@"Loading"];
     @weakify(self);
-    [[HNRequestManager manager] getNewStoryIDsWithKind:kind hanlder:^(id object, BOOL state) {
+    [[HNRequestManager manager] getNewStoryIDsWithKind:p_currentKind hanlder:^(id object, BOOL state) {
         @strongify(self);
         if (state == requestSuccess) {
-            [self.stories removeAllObjects];
-            self.stories = [NSMutableArray arrayWithArray:object];
+            [self hideHudWithSuccessMessage:@"Completed"];
+            NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
+            self.stories = [dictionary objectForKey:@"models"];
+            self.allStoryIDs = [dictionary objectForKey:@"id"];
             [self.tableView reloadData];
         } else {
-            
+            [self hideHudWithErrorMessage:@"Error"];
         }
     }];
 }
 
+#pragma mark - LazyLoading
 - (UITableView *)tableView
 {
     if (!_tableView) {

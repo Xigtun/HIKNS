@@ -31,7 +31,6 @@
         
         NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
         NSString *dbPath = [docPath stringByAppendingPathComponent:@"HN.db"];
-        self.dbQueue = [FMDatabaseQueue databaseQueueWithPath:dbPath];
         if (![fileManager fileExistsAtPath:dbPath]) {
             NSURL *prototypeDBURL = [[NSBundle mainBundle] URLForResource:@"HN" withExtension:@"db"];
             NSError *error = nil;
@@ -40,6 +39,7 @@
                 NSLog(@"%@", error);
             }
         }
+        self.dbQueue = [FMDatabaseQueue databaseQueueWithPath:dbPath];
     });
 }
 
@@ -48,7 +48,7 @@
 {
     NSMutableArray *storyIDs = [NSMutableArray array];
     [self.dbQueue inDatabase:^(FMDatabase *db) {
-        NSString *sql = @"select id from stories order by id desc";
+        NSString *sql = @"select story_id from story_news order by id desc";
         FMResultSet *result = [db executeQuery:sql];
         while ([result next]) {
             NSInteger storyID = [result intForColumn:@"id"];
@@ -63,7 +63,7 @@
     __block HNStoryModel *story = [HNStoryModel new];
     
     [self.dbQueue inDatabase:^(FMDatabase *db) {
-        NSString *sql = @"select * from stories where id = ?;";
+        NSString *sql = @"select * from story_news where story_id = ?;";
         FMResultSet *result = [db executeQuery:sql, storyID];
         while ([result next]) {
             story = [MTLFMDBAdapter modelOfClass:[HNStoryModel class] fromFMResultSet:result error:nil];
@@ -73,26 +73,78 @@
     return story;
 }
 
+- (NSMutableArray *)getStoriesWithKind:(RequestKind)kind
+{
+    NSMutableArray *stories = [NSMutableArray array];
+    
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
+        NSString *tableName = [self getTableName:kind];
+        NSString *sql = [NSString stringWithFormat:@"select * from %@", tableName];
+        FMResultSet *result = [db executeQuery:sql];
+        while ([result next]) {
+            HNStoryModel *story = [MTLFMDBAdapter modelOfClass:[HNStoryModel class] fromFMResultSet:result error:nil];
+            if (story.title) {
+                [stories addObject:story];
+            }
+        }
+    }];
+    
+    return stories;
+}
+
 - (void)insertID:(NSArray *)storyIDs kind:(RequestKind)kind
 {
     [self.dbQueue inDatabase:^(FMDatabase *db) {
+        NSString *tableName = [self getTableName:kind];
         for (NSNumber *storyID in storyIDs) {
-            NSString *sql = @"insert stories (id) values (?)";
+            NSString *sql = [NSString stringWithFormat:@"insert into %@ (story_id) values (?)", tableName];
             [db executeUpdate:sql, storyID];
         }
     }];
 }
 
-- (void)insertStory:(HNStoryModel *)story
+- (void)insertStory:(HNStoryModel *)story kind:(RequestKind)kind
 {
-    __block BOOL result = NO;
     [self.dbQueue inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:@"PRAGMA foreign_keys=ON;"];
-        NSString *sqlInsert = @"insert into stories (id, title, type, author, time, url, score, comment_count, kids) values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        NSString *tableName = [self getTableName:kind];
+        NSString *sql = [NSString stringWithFormat:@"update %@ set title=?, type=?, author=?, time=?, url=?, score=?, comment_count=?, kids=? where story_id=?", tableName];
         NSString *kids = [story.kids componentsJoinedByString:@","];
-        result = [db executeUpdate:sqlInsert, story.storyID, story.title, story.type, story.author, story.time, story.originPath, story.score, story.descendants, kids];
-        NSLog(@"%hhd", result);
+        BOOL result = [db executeUpdate:sql, story.title, story.type, story.author, story.time, story.originPath, story.score, story.descendants, kids, story.storyID];
+        NSLog(result ? @"YES" : @"NO");
     }];
+}
+
+- (void)deleteAllData:(RequestKind)kind
+{
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
+        NSString *tableName = [self getTableName:kind];
+        NSString *sql = [NSString stringWithFormat:@"delete from %@", tableName];
+        BOOL result = [db executeUpdate:sql];
+        NSLog(result ? @"YES" : @"NO");
+    }];
+}
+
+- (NSString *)getTableName:(RequestKind)kind
+{
+    NSString *tableName;
+    switch (kind) {
+        case RequestKindNews:
+            tableName = @"story_news";
+            break;
+        case RequestKindAsk:
+            tableName = @"story_ask";
+            break;
+        case RequestKindShow:
+            tableName = @"story_show";
+            break;
+        case RequestKindJobs:
+            tableName = @"story_jobs";
+            break;
+        case RequestKindBest:
+            tableName = @"story_best";
+            break;
+    }
+    return tableName;
 }
 
 @end

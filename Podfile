@@ -1,15 +1,15 @@
 platform :ios, '8.0'
 
   pod 'MBProgressHUD'
-  pod 'SDWebImage', '~>3.7'
-  pod 'AFNetworking', '~> 2.6'
   pod 'Mantle'
   pod 'TLYShyNavBar'
   pod "MTLFMDBAdapter"
   pod 'FDFullscreenPopGesture'
   pod 'MJRefresh'
+  pod 'Toast'
   pod 'NSDate+TimeAgo'
   pod 'ViewDeck'
+  pod 'MAThemeKit'
   pod 'UIView+Positioning'
   pod 'TOWebViewController'
   pod 'Firebase', '>= 2.5.0'
