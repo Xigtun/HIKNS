@@ -12,8 +12,6 @@
 #import <UIView+Toast.h>
 #import <TOWebViewController/TOWebViewController.h>
 #import <SafariServices/SafariServices.h>
-
-#import <TLYShyNavBar/TLYShyNavBarManager.h>
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 #import "HNRequestManager.h"
 #import "HNDataBaseManager.h"
@@ -51,7 +49,6 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     
     [self setupRefreshAction];
     
-//    self.shyNavBarManager.scrollView = self.tableView;
     self.stories = [[HNDataBaseManager manager] getStoriesWithKind:RequestKindNews];
     [self.tableView reloadData];
     
