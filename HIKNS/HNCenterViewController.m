@@ -145,7 +145,12 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     self.viewDeckController.leftSize = 160;
     HNLeftViewController *leftController = (HNLeftViewController *)self.viewDeckController.leftController;
     leftController.delegate = self;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"left" style:UIBarButtonItemStylePlain target:self.viewDeckController action:@selector(toggleLeftView)];
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 20)];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
+    [leftButton addTarget:self.viewDeckController action:@selector(toggleLeftView) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = leftItem;
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"left" style:UIBarButtonItemStylePlain target:self.viewDeckController action:@selector(toggleLeftView)];
 }
 
 - (void)previewBounceLeftView {
