@@ -78,6 +78,10 @@ const char *kHudKey = "ProgressHUD_Key";
 
 - (void)hideHudWithMessage:(NSString *)message image:(UIImage *)image
 {
+    if (self.progressHud.taskInProgress) {
+        return;
+    }
+
     self.progressHud.customView = [[UIImageView alloc] initWithImage:image];
     self.progressHud.mode = MBProgressHUDModeCustomView;
     self.progressHud.labelText = message;
