@@ -57,6 +57,9 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     
     [self getNewestData:RequestKindNews];
     
+    UIView *statusBarView = [[UIView alloc] initWithFrame:[UIApplication sharedApplication].statusBarFrame];
+    statusBarView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:statusBarView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
