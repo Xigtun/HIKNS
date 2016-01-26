@@ -1,9 +1,9 @@
 //
-//  NSString+RemoveTag.m
-//  hn
+//  NSString+RemoveTag.h
+//  HIKNS
 //
-//  Created by Marcin on 05.11.2014.
-//  Copyright (c) 2014 Marcin. All rights reserved.
+//  Created by cysu on 16/1/20.
+//  Copyright © 2016年 cysu1077.ns. All rights reserved.
 //
 
 #import "NSString+RemoveTag.h"

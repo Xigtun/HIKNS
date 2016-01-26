@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '54332E4927ED839E3A4B2355'
+               BlueprintIdentifier = 'F5180BB084C40BCC2AF8F762'
                BlueprintName = 'MTLFMDBAdapter'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libMTLFMDBAdapter.a'>

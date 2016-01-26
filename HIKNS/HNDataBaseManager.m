@@ -99,9 +99,10 @@
 
 - (void)insertID:(NSArray *)storyIDs kind:(RequestKind)kind
 {
+    NSArray *tempArray = [storyIDs copy];
     [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *tableName = [self getTableName:kind];
-        for (NSNumber *storyID in storyIDs) {
+        for (NSNumber *storyID in tempArray) {
             NSString *sql = [NSString stringWithFormat:@"insert into %@ (story_id) values (?)", tableName];
             [db executeUpdate:sql, storyID];
         }
@@ -129,6 +130,7 @@
     }];
 }
 
+#pragma mark - Private
 - (NSString *)getTableName:(RequestKind)kind
 {
     NSString *tableName;

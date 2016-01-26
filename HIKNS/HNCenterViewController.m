@@ -20,6 +20,7 @@
 #import "HNCommentViewController.h"
 #import "GTScrollNavigationBar.h"
 #import <UIView+Positioning/UIView+Positioning.h>
+#import "UIViewController+HUD.h"
 
 @interface HNCenterViewController ()<SFSafariViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate>
 
@@ -106,6 +107,7 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
 - (void)loadNewData
 {
     @weakify(self);
+    
     [[HNRequestManager manager] getNewStoryIDsWithKind:p_currentKind hanlder:^(id object, BOOL state) {
         @strongify(self);
         if (state == requestSuccess) {
@@ -162,7 +164,7 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.stories.count ?: 100;
+    return self.stories.count ?: 30;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -196,7 +198,7 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
         [self.navigationController pushViewController:commentController animated:YES];
     } else {
         NSURL *url = [NSURL URLWithString:story.originPath];
-        if(NSClassFromString(@"SFSafariViewController")) {
+        if(!NSClassFromString(@"SFSafariViewController")) {
             SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
             [svc setHidesBottomBarWhenPushed:YES];
             svc.delegate = self;
@@ -238,15 +240,23 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
     }
     
     self.title = title;
-    self.stories = [[HNDataBaseManager manager] getStoriesWithKind:kind];
-    [self.tableView reloadData];
-    [self.tableView.mj_header beginRefreshing];
-}
-
-#pragma mark - detact orientation
-- (void)deviceOrientationDidChange:(NSNotification *)notification {
-    self.tableView.width = self.view.width;
-    [self.tableView layoutIfNeeded];
+    
+    [self.stories removeAllObjects];
+    [self.allStoryIDs removeAllObjects];
+    if (kind == RequestKindAsk || kind == RequestKindJobs) {
+        [self.tableView reloadData];
+        [self.tableView.mj_header beginRefreshing];
+    } else {
+        [self showHudWithMessage:@"Loading"];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            self.stories = [[HNDataBaseManager manager] getStoriesWithKind:kind];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideHud];
+                [self.tableView reloadData];
+                [self.tableView.mj_header beginRefreshing];
+            });
+        });
+    }
 }
 
 #pragma mark - LazyLoading

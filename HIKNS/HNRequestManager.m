@@ -60,9 +60,11 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
     [storiesIdEvent observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
         NSArray *storyIDs = [snapshot.value mutableCopy];
-        [[HNDataBaseManager manager] deleteAllData:kind];
-        [[HNDataBaseManager manager] insertID:storyIDs kind:kind];
-        //获取100条数据 pass complete
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [[HNDataBaseManager manager] deleteAllData:kind];
+            [[HNDataBaseManager manager] insertID:storyIDs kind:kind];
+        });
+        //get 100 items
         [self getStoryDataByIDs:storyIDs kind:kind hanlder:complete];
     } withCancelBlock:^(NSError *error) {
         complete(error, requestError);
@@ -86,7 +88,9 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
         [storyDescriptionRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
             NSDictionary *responseDictionary = snapshot.value;
             HNStoryModel *story = [MTLJSONAdapter modelOfClass:[HNStoryModel class] fromJSONDictionary:responseDictionary error:nil];
-            [[HNDataBaseManager manager] insertStory:story kind:kind];
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [[HNDataBaseManager manager] insertStory:story kind:kind];
+            });
             
             [storyModels addObject:story];
             if (storyModels.count == shortStories.count) {
