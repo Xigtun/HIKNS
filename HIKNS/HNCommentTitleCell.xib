@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61P-D2-bCt">
-                        <rect key="frame" x="8" y="24" width="304" height="60"/>
+                        <rect key="frame" x="8" y="24" width="304" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="751" constant="40" id="z7o-eb-0m6"/>
                         </constraints>
@@ -52,7 +52,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUf-oh-8li">
-                        <rect key="frame" x="8" y="84" width="304" height="21"/>
+                        <rect key="frame" x="8" y="79" width="304" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="7N2-9e-LSU"/>
                         </constraints>
@@ -61,7 +61,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3m-lI-K2E">
-                        <rect key="frame" x="8" y="108" width="304" height="60"/>
+                        <rect key="frame" x="8" y="105" width="304" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="FsG-UV-WN3"/>
                         </constraints>
@@ -82,8 +82,8 @@
                     <constraint firstItem="LUf-oh-8li" firstAttribute="width" secondItem="61P-D2-bCt" secondAttribute="width" id="WcC-jX-sRo"/>
                     <constraint firstAttribute="bottom" secondItem="LUf-oh-8li" secondAttribute="bottom" priority="250" id="Wl7-dH-oes"/>
                     <constraint firstItem="q3m-lI-K2E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Yfz-nM-UJp"/>
-                    <constraint firstAttribute="bottom" secondItem="q3m-lI-K2E" secondAttribute="bottom" constant="5" id="bdH-Rp-Hud"/>
-                    <constraint firstItem="q3m-lI-K2E" firstAttribute="top" secondItem="LUf-oh-8li" secondAttribute="bottom" priority="750" constant="3" id="eDG-W9-uaE"/>
+                    <constraint firstAttribute="bottom" secondItem="q3m-lI-K2E" secondAttribute="bottom" constant="8" id="bdH-Rp-Hud"/>
+                    <constraint firstItem="q3m-lI-K2E" firstAttribute="top" secondItem="LUf-oh-8li" secondAttribute="bottom" priority="750" constant="5" id="eDG-W9-uaE"/>
                     <constraint firstItem="7yr-Od-oRj" firstAttribute="centerY" secondItem="8MB-N4-cv8" secondAttribute="centerY" id="h3a-7X-IYP"/>
                     <constraint firstItem="61P-D2-bCt" firstAttribute="leading" secondItem="BL6-ht-Mbi" secondAttribute="leading" id="lKk-bR-7Xc"/>
                     <constraint firstItem="7yr-Od-oRj" firstAttribute="height" secondItem="8MB-N4-cv8" secondAttribute="height" id="lid-AX-AcM"/>

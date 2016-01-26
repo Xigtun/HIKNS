@@ -19,7 +19,7 @@
 #import "HNMainTableViewCell.h"
 #import "HNCommentViewController.h"
 #import "UIViewController+HUD.h"
-
+#import "GTScrollNavigationBar.h"
 @interface HNCenterViewController ()<SFSafariViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *stories;
@@ -33,8 +33,9 @@
     RequestKind p_currentKind;
 }
 
-
 static NSString *const kCellIdentifier = @"HNMainTableViewCell";
+static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier";
+
 
 #pragma mark - LifeCircle
 - (void)viewDidLoad
@@ -45,6 +46,7 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     self.fd_prefersNavigationBarHidden = NO;
     [self.view addSubview:self.tableView];
     [self.tableView registerNib:[UINib nibWithNibName:@"HNMainTableViewCell" bundle:nil] forCellReuseIdentifier:kCellIdentifier];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kPlaceHolderCellIdentifier];
     self.tableView.estimatedRowHeight = 150;
     self.tableView.tableFooterView = [UIView new];
     
@@ -61,13 +63,18 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.hidesBarsOnSwipe = YES;
+    self.navigationController.scrollNavigationBar.scrollView = self.tableView;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.navigationController.hidesBarsOnSwipe = NO;
+    self.navigationController.scrollNavigationBar.scrollView = nil;
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+    [self.navigationController.scrollNavigationBar resetToDefaultPositionWithAnimation:NO];
 }
 
 #pragma mark - Refresh
@@ -164,6 +171,10 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (IsArrayEmpty(self.stories)) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceHolderCellIdentifier];
+        return cell;
+    }
     HNMainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     if (self.stories.count > 0) {
         HNStoryModel *story = self.stories[indexPath.row];
@@ -189,8 +200,9 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
         [self.navigationController pushViewController:commentController animated:YES];
     } else {
         NSURL *url = [NSURL URLWithString:story.originPath];
-        if(NSClassFromString(@"SFSafariViewController")) {
+        if(!NSClassFromString(@"SFSafariViewController")) {
             SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
+            [svc setHidesBottomBarWhenPushed:YES];
             svc.delegate = self;
             [self presentViewController:svc animated:YES completion:nil];
         } else {
@@ -232,22 +244,9 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     self.title = title;
     self.stories = [[HNDataBaseManager manager] getStoriesWithKind:kind];
     [self.tableView reloadData];
-    [self showHudWithMessage:@"Loading"];
-    @weakify(self);
-    [[HNRequestManager manager] getNewStoryIDsWithKind:p_currentKind hanlder:^(id object, BOOL state) {
-        @strongify(self);
-        if (state == requestSuccess) {
-            [self hideHudWithSuccessMessage:@"Completed"];
-            NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
-            self.stories = [dictionary objectForKey:@"models"];
-            self.allStoryIDs = [dictionary objectForKey:@"id"];
-            [self.tableView reloadData];
-        } else {
-            [self hideHudWithErrorMessage:@"Error"];
-        }
-    }];
+    [self.tableView.mj_header beginRefreshing];
 }
-
+/*
 #pragma mark - RequestData
 - (void)getNewestData:(RequestKind)kind
 {
@@ -266,7 +265,7 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
         }
     }];
 }
-
+*/
 #pragma mark - LazyLoading
 - (UITableView *)tableView
 {

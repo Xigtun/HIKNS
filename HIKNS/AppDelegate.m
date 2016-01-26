@@ -15,10 +15,11 @@
 
 #import "HNDataBaseManager.h"
 #import "HNCenterViewController.h"
-//#import "HNMainTableViewController.h"
 #import "HNLeftViewController.h"
 #import <MAThemeKit/MAThemeKit.h>
-
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+#import "GTScrollNavigationBar.h"
 @interface AppDelegate ()
 
 @end
@@ -27,14 +28,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     NSURLCache *urlCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
     [NSURLCache setSharedURLCache:urlCache];
+    
+    [[Fabric sharedSDK] setDebug: YES];
+    [Fabric with:@[[Crashlytics class]]];
+    
     [[HNDataBaseManager manager] prepareDataBase];
     
     [MAThemeKit setupThemeWithPrimaryColor:[MAThemeKit colorWithHexString:@"f9f9f9"] secondaryColor:[UIColor blackColor] fontName:@"HelveticaNeue-Light" lightStatusBar:YES];
     [MAThemeKit customizeActivityIndicatorColor:[UIColor darkGrayColor]];
-    
+    [MAThemeKit customizeToolbarTintColor:[UIColor darkGrayColor]];
+    [[UIButton appearance] setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
                                                          forBarMetrics:UIBarMetricsDefault];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -51,14 +56,14 @@
     HNLeftViewController* leftController = [[HNLeftViewController alloc] init];
 //    UIViewController *centerController = [[HNMainTableViewController alloc] init];
     UIViewController *centerController = [[HNCenterViewController alloc] init];
-
-    centerController = [[UINavigationController alloc] initWithRootViewController:centerController];
-    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:centerController
+    UINavigationController *navController = [[UINavigationController alloc] initWithNavigationBarClass:[GTScrollNavigationBar class]
+                                                  toolbarClass:nil];
+    [navController setViewControllers:@[centerController] animated:NO];
+//    centerController = [[UINavigationController alloc] initWithRootViewController:centerController];
+    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:navController
                                                                                     leftViewController:leftController
                                                                                    rightViewController:nil];
-//    deckController.leftSize = 210;
     deckController.shadowEnabled = NO;
-    
     [deckController disablePanOverViewsOfClass:NSClassFromString(@"_UITableViewHeaderFooterContentView")];
     return deckController;
 }

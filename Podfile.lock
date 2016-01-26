@@ -1,4 +1,7 @@
 PODS:
+  - Crashlytics (3.6.0):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.4)
   - FDFullscreenPopGesture (1.1)
   - Firebase (2.5.0)
   - FMDB (2.6):
@@ -23,6 +26,8 @@ PODS:
   - ViewDeck (2.4.1)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - FDFullscreenPopGesture
   - Firebase (>= 2.5.0)
   - FMDB
@@ -39,6 +44,8 @@ DEPENDENCIES:
   - ViewDeck
 
 SPEC CHECKSUMS:
+  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
+  Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e

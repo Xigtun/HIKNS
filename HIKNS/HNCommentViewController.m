@@ -26,6 +26,7 @@
 @implementation HNCommentViewController
 static NSString *const kCellIdentifier = @"HNCommentViewCell";
 static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
+static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +39,9 @@ static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"HNCommentViewCell" bundle:nil] forCellReuseIdentifier:kCellIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"HNCommentTitleCell" bundle:nil]
          forCellReuseIdentifier:kTitleCellIdentifier];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kPlaceHolderCellIdentifier];
     self.tableView.estimatedRowHeight = 600;
+    
     self.shyNavBarManager.scrollView = self.tableView;
     [self requestData];
     
@@ -55,16 +58,13 @@ static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
 - (void)requestData
 {
     if (self.story.kids.count > 0) {
-//        [self showHudWithMessage:@"Loading"];
         @weakify(self);
         [[HNRequestManager manager] getStoryDataByIDs:self.story.kids hanlder:^(id object, BOOL state) {
             @strongify(self);
             if (state == requestSuccess) {
-//                [self hideHudWithSuccessMessage:@"Completed"];
                 self.stories = [NSArray arrayWithArray:object];
                 [self.tableView reloadData];
             } else {
-//                [self hideHudWithErrorMessage:@"Error"];
             }
         }];
     }
@@ -92,6 +92,10 @@ static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
         [cell configureUIWithModel:self.story];
         return cell;
     } else {
+        if (IsArrayEmpty(self.stories)) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceHolderCellIdentifier];
+            return cell;
+        }
         HNCommentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
         [cell configureUI:self.stories[indexPath.row] index:indexPath.row];
         

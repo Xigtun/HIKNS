@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */; };
+		437C2CB91C5725C100BD09EB /* GTScrollNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C2CB81C5725C100BD09EB /* GTScrollNavigationBar.m */; };
 		438A981F1C4F23E500AFF433 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A981E1C4F23E500AFF433 /* main.m */; };
 		438A98221C4F23E500AFF433 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98211C4F23E500AFF433 /* AppDelegate.m */; };
 		438A982A1C4F23E500AFF433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438A98291C4F23E500AFF433 /* Assets.xcassets */; };
 		438A982D1C4F23E500AFF433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438A982B1C4F23E500AFF433 /* LaunchScreen.storyboard */; };
-		438A98361C4F2E7600AFF433 /* HNMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98351C4F2E7600AFF433 /* HNMainTableViewController.m */; };
 		438A98391C4F2FC600AFF433 /* HNLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98381C4F2FC600AFF433 /* HNLeftViewController.m */; };
 		438A983C1C4F3E4600AFF433 /* HNRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A983B1C4F3E4600AFF433 /* HNRequestManager.m */; };
 		438A98451C4F5E2D00AFF433 /* HNMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98431C4F5E2D00AFF433 /* HNMainTableViewCell.m */; };
@@ -36,6 +36,8 @@
 /* Begin PBXFileReference section */
 		437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		437C2CB71C5725C100BD09EB /* GTScrollNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTScrollNavigationBar.h; sourceTree = "<group>"; };
+		437C2CB81C5725C100BD09EB /* GTScrollNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTScrollNavigationBar.m; sourceTree = "<group>"; };
 		438A981A1C4F23E500AFF433 /* HIKNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIKNS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438A981E1C4F23E500AFF433 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		438A98201C4F23E500AFF433 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,8 +45,6 @@
 		438A98291C4F23E500AFF433 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		438A982C1C4F23E500AFF433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		438A982E1C4F23E500AFF433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		438A98341C4F2E7600AFF433 /* HNMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNMainTableViewController.h; sourceTree = "<group>"; };
-		438A98351C4F2E7600AFF433 /* HNMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNMainTableViewController.m; sourceTree = "<group>"; };
 		438A98371C4F2FC600AFF433 /* HNLeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLeftViewController.h; sourceTree = "<group>"; };
 		438A98381C4F2FC600AFF433 /* HNLeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNLeftViewController.m; sourceTree = "<group>"; };
 		438A983A1C4F3E4600AFF433 /* HNRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNRequestManager.h; sourceTree = "<group>"; };
@@ -93,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		437C2CB61C5725C100BD09EB /* GTScrollNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				437C2CB71C5725C100BD09EB /* GTScrollNavigationBar.h */,
+				437C2CB81C5725C100BD09EB /* GTScrollNavigationBar.m */,
+			);
+			path = GTScrollNavigationBar;
+			sourceTree = "<group>";
+		};
 		438A98111C4F23E500AFF433 = {
 			isa = PBXGroup;
 			children = (
@@ -127,7 +136,6 @@
 		438A981D1C4F23E500AFF433 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				438A98831C51B95600AFF433 /* UnUse */,
 				438A98491C4F729500AFF433 /* HN.db */,
 				438A98201C4F23E500AFF433 /* AppDelegate.h */,
 				438A98211C4F23E500AFF433 /* AppDelegate.m */,
@@ -194,6 +202,7 @@
 		438A98511C50761500AFF433 /* Vandor */ = {
 			isa = PBXGroup;
 			children = (
+				437C2CB61C5725C100BD09EB /* GTScrollNavigationBar */,
 				437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */,
 				437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */,
 				438A98941C53530A00AFF433 /* Utils.h */,
@@ -202,15 +211,6 @@
 				438A98981C53531700AFF433 /* NSString+RemoveTag.m */,
 			);
 			name = Vandor;
-			sourceTree = "<group>";
-		};
-		438A98831C51B95600AFF433 /* UnUse */ = {
-			isa = PBXGroup;
-			children = (
-				438A98341C4F2E7600AFF433 /* HNMainTableViewController.h */,
-				438A98351C4F2E7600AFF433 /* HNMainTableViewController.m */,
-			);
-			name = UnUse;
 			sourceTree = "<group>";
 		};
 		69EDD6C2ADCAE9E88CAD565D /* Pods */ = {
@@ -244,6 +244,7 @@
 				438A98181C4F23E500AFF433 /* Resources */,
 				2ADB47B339B9F4CA6365D67E /* Embed Pods Frameworks */,
 				A8B243097EC1AA74965BE7A8 /* Copy Pods Resources */,
+				437C2CB51C5711A700BD09EB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -320,6 +321,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		437C2CB51C5711A700BD09EB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7d7661a878e0686532124c615ffc70b8484d111c 498ebd3d404d5f084373ae305059403c7c0f1ae595a31c4fcd2a5712b1ecdcbb";
+		};
 		A8B243097EC1AA74965BE7A8 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,7 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */,
-				438A98361C4F2E7600AFF433 /* HNMainTableViewController.m in Sources */,
+				437C2CB91C5725C100BD09EB /* GTScrollNavigationBar.m in Sources */,
 				438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */,
 				438A98991C53531700AFF433 /* NSString+RemoveTag.m in Sources */,
 				438A98921C5219F800AFF433 /* HNCommentViewCell.m in Sources */,
