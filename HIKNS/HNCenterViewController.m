@@ -37,6 +37,7 @@
 
 static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier";
+static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
 
 
 #pragma mark - LifeCircle
@@ -52,20 +53,17 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
     self.tableView.estimatedRowHeight = 150;
     self.tableView.tableFooterView = [UIView new];
     
-    [self setupRefreshAction];
-    
     self.stories = [[HNDataBaseManager manager] getStoriesWithKind:RequestKindNews];
     [self.tableView reloadData];
     
-    UIView *statusBarView = [[UIView alloc] initWithFrame:[UIApplication sharedApplication].statusBarFrame];
-    statusBarView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:statusBarView];
+    [self setupRefreshAction];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.scrollNavigationBar.scrollView = self.tableView;
+    self.viewDeckController.navigationController.toolbarHidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -198,7 +196,7 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
         [self.navigationController pushViewController:commentController animated:YES];
     } else {
         NSURL *url = [NSURL URLWithString:story.originPath];
-        if(!NSClassFromString(@"SFSafariViewController")) {
+        if(NSClassFromString(@"SFSafariViewController")) {
             SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
             [svc setHidesBottomBarWhenPushed:YES];
             svc.delegate = self;

@@ -346,6 +346,13 @@
         
         self.doneButton.tintColor = self.buttonTintColor;
     }
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navi_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+}
+
+- (void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - View Presentation/Dismissal -
@@ -502,7 +509,7 @@
         
     //Reset the lot
     self.toolbarItems = nil;
-    self.navigationItem.leftBarButtonItems = nil;
+//    self.navigationItem.leftBarButtonItems = nil;
     self.navigationItem.rightBarButtonItems = nil;
     self.navigationItem.leftItemsSupplementBackButton = NO;
     
@@ -526,7 +533,7 @@
             // place on the left or right depending on the type of presentation
             if (self.beingPresentedModally) {
                 if (!self.applicationLeftBarButtonItems) {
-                    self.navigationItem.leftBarButtonItem = self.applicationBarButtonItems.firstObject;
+//                    self.navigationItem.leftBarButtonItem = self.applicationBarButtonItems.firstObject;
                 }
             }
             else {
@@ -614,7 +621,7 @@
         }
     }
     
-    self.navigationItem.leftBarButtonItems = leftItems;
+//    self.navigationItem.leftBarButtonItems = leftItems;
     self.navigationItem.leftItemsSupplementBackButton = YES;
     self.navigationItem.rightBarButtonItems = rightItems;
 }
