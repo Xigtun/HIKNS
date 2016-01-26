@@ -63,7 +63,7 @@
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:navController
                                                                                     leftViewController:leftController
                                                                                    rightViewController:nil];
-    deckController.shadowEnabled = NO;
+    deckController.shadowEnabled = YES;
     [deckController disablePanOverViewsOfClass:NSClassFromString(@"_UITableViewHeaderFooterContentView")];
     return deckController;
 }
