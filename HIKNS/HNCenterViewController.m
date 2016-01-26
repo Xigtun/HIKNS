@@ -18,8 +18,9 @@
 #import "HNLeftViewController.h"
 #import "HNMainTableViewCell.h"
 #import "HNCommentViewController.h"
-#import "UIViewController+HUD.h"
 #import "GTScrollNavigationBar.h"
+#import <UIView+Positioning/UIView+Positioning.h>
+
 @interface HNCenterViewController ()<SFSafariViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *stories;
@@ -82,10 +83,7 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
 {
     p_currentKind = RequestKindNews;
     
-    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-    
-    // 设置文字
     [header setTitle:@"Pull down to refresh" forState:MJRefreshStateIdle];
     [header setTitle:@"Release to refresh" forState:MJRefreshStatePulling];
     [header setTitle:@"Loading ..." forState:MJRefreshStateRefreshing];
@@ -96,14 +94,12 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
     self.tableView.mj_header = header;
 
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-    
-    // 设置文字
     [footer setTitle:@"Click or drag up to refresh" forState:MJRefreshStateIdle];
     [footer setTitle:@"Loading more ..." forState:MJRefreshStateRefreshing];
     [footer setTitle:@"No more data" forState:MJRefreshStateNoMoreData];
     footer.automaticallyRefresh = NO;
     footer.automaticallyChangeAlpha = YES;
-    // 设置footer
+
     self.tableView.mj_footer = footer;
 }
 
@@ -200,7 +196,7 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
         [self.navigationController pushViewController:commentController animated:YES];
     } else {
         NSURL *url = [NSURL URLWithString:story.originPath];
-        if(!NSClassFromString(@"SFSafariViewController")) {
+        if(NSClassFromString(@"SFSafariViewController")) {
             SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
             [svc setHidesBottomBarWhenPushed:YES];
             svc.delegate = self;
@@ -246,26 +242,13 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
     [self.tableView reloadData];
     [self.tableView.mj_header beginRefreshing];
 }
-/*
-#pragma mark - RequestData
-- (void)getNewestData:(RequestKind)kind
-{
-    [self showHudWithMessage:@"Loading"];
-    @weakify(self);
-    [[HNRequestManager manager] getNewStoryIDsWithKind:kind hanlder:^(id object, BOOL state) {
-        @strongify(self);
-        if (state == requestSuccess) {
-            [self hideHudWithSuccessMessage:@"Completed"];
-            NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
-            self.stories = [dictionary objectForKey:@"models"];
-            self.allStoryIDs = [dictionary objectForKey:@"id"];
-            [self.tableView reloadData];
-        } else {
-            [self hideHudWithErrorMessage:@"Error"];
-        }
-    }];
+
+#pragma mark - detact orientation
+- (void)deviceOrientationDidChange:(NSNotification *)notification {
+    self.tableView.width = self.view.width;
+    [self.tableView layoutIfNeeded];
 }
-*/
+
 #pragma mark - LazyLoading
 - (UITableView *)tableView
 {
