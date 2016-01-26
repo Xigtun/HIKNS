@@ -33,6 +33,8 @@
     [[HNDataBaseManager manager] prepareDataBase];
     
     [MAThemeKit setupThemeWithPrimaryColor:[MAThemeKit colorWithHexString:@"f9f9f9"] secondaryColor:[UIColor blackColor] fontName:@"HelveticaNeue-Light" lightStatusBar:YES];
+    [MAThemeKit customizeActivityIndicatorColor:[UIColor darkGrayColor]];
+    
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
                                                          forBarMetrics:UIBarMetricsDefault];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

@@ -14,6 +14,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
+    self.commentCount.layer.cornerRadius = CGRectGetHeight(self.commentCount.frame) * 0.5;
+    self.commentCount.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -55,16 +55,16 @@ static NSString *const kTitleCellIdentifier = @"HNCommentTitleCell";
 - (void)requestData
 {
     if (self.story.kids.count > 0) {
-        [self showHudWithMessage:@"Loading"];
+//        [self showHudWithMessage:@"Loading"];
         @weakify(self);
         [[HNRequestManager manager] getStoryDataByIDs:self.story.kids hanlder:^(id object, BOOL state) {
             @strongify(self);
             if (state == requestSuccess) {
-                [self hideHudWithSuccessMessage:@"Completed"];
+//                [self hideHudWithSuccessMessage:@"Completed"];
                 self.stories = [NSArray arrayWithArray:object];
                 [self.tableView reloadData];
             } else {
-                [self hideHudWithErrorMessage:@"Error"];
+//                [self hideHudWithErrorMessage:@"Error"];
             }
         }];
     }

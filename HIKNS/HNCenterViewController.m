@@ -36,10 +36,11 @@
 
 static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 
+#pragma mark - LifeCircle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"hnn";
+    self.title = @"News";
     [self setupLeftMenuButton];
     self.fd_prefersNavigationBarHidden = NO;
     [self.view addSubview:self.tableView];
@@ -51,8 +52,6 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     
     self.stories = [[HNDataBaseManager manager] getStoriesWithKind:RequestKindNews];
     [self.tableView reloadData];
-    
-    [self getNewestData:RequestKindNews];
     
     UIView *statusBarView = [[UIView alloc] initWithFrame:[UIApplication sharedApplication].statusBarFrame];
     statusBarView.backgroundColor = [UIColor whiteColor];
@@ -71,75 +70,77 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     self.navigationController.hidesBarsOnSwipe = NO;
 }
 
+#pragma mark - Refresh
 - (void)setupRefreshAction
 {
     p_currentKind = RequestKindNews;
-    @weakify(self);
-    // 下拉刷新
-    self.tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        @strongify(self);
-        @weakify(self);
-        [[HNRequestManager manager] getNewStoryIDsWithKind:p_currentKind hanlder:^(id object, BOOL state) {
-            @strongify(self);
-            if (state == requestSuccess) {
-                NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
-                self.stories = [dictionary objectForKey:@"models"];
-                self.allStoryIDs = [dictionary objectForKey:@"id"];
-                [self.tableView reloadData];
-            } else {
-            }
-            [self.tableView.mj_header endRefreshing];
-        }];
-    }];
     
-    // 设置自动切换透明度(在导航栏下面自动隐藏)
-    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
+    // 设置文字
+    [header setTitle:@"Pull down to refresh" forState:MJRefreshStateIdle];
+    [header setTitle:@"Release to refresh" forState:MJRefreshStatePulling];
+    [header setTitle:@"Loading ..." forState:MJRefreshStateRefreshing];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.automaticallyChangeAlpha = YES;
+    [header beginRefreshing];
 
-    // 上拉刷新
-    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        @strongify(self);
-        if (self.allStoryIDs.count <= self.stories.count) {
-            [self.view makeToast:@"There's no more data!" duration:0.5 position:CSToastPositionCenter];
-            [self.tableView.mj_footer endRefreshing];
-            return;
-        }
-        NSArray *requestStories = [self.allStoryIDs subarrayWithRange:NSMakeRange(MIN(self.stories.count, self.allStoryIDs.count), MIN(100, self.allStoryIDs.count - self.stories.count))];
-        @weakify(self);
-        [[HNRequestManager manager] getStoryDataByIDs:requestStories kind:p_currentKind hanlder:^(id object, BOOL state) {
-            @strongify(self);
-            if (state == requestSuccess) {
-                NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
-                NSArray *nextStories = [dictionary objectForKey:@"models"];
-                NSArray *tempArray = [self.stories arrayByAddingObjectsFromArray:nextStories];
-                self.stories = [NSMutableArray arrayWithArray:tempArray];
-            } else {
-            }
-            // 结束刷新
-            [self.tableView reloadData];
-            [self.tableView.mj_footer endRefreshing];
-        }];
-        
-    }];
+    self.tableView.mj_header = header;
+
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    
+    // 设置文字
+    [footer setTitle:@"Click or drag up to refresh" forState:MJRefreshStateIdle];
+    [footer setTitle:@"Loading more ..." forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"No more data" forState:MJRefreshStateNoMoreData];
+    footer.automaticallyRefresh = NO;
+    footer.automaticallyChangeAlpha = YES;
+    // 设置footer
+    self.tableView.mj_footer = footer;
 }
 
-- (void)getNewestData:(RequestKind)kind
+- (void)loadNewData
 {
-    [self showHudWithMessage:@"Loading"];
     @weakify(self);
-    [[HNRequestManager manager] getNewStoryIDsWithKind:kind hanlder:^(id object, BOOL state) {
+    [[HNRequestManager manager] getNewStoryIDsWithKind:p_currentKind hanlder:^(id object, BOOL state) {
         @strongify(self);
         if (state == requestSuccess) {
-            [self hideHudWithSuccessMessage:@"Completed"];
             NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
             self.stories = [dictionary objectForKey:@"models"];
             self.allStoryIDs = [dictionary objectForKey:@"id"];
             [self.tableView reloadData];
         } else {
-            [self hideHudWithErrorMessage:@"Error"];
         }
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 
+- (void)loadMoreData
+{
+    if (self.allStoryIDs.count <= self.stories.count) {
+        [self.view makeToast:@"There's no more data!" duration:0.5 position:CSToastPositionCenter];
+        [self.tableView.mj_footer endRefreshing];
+        return;
+    }
+    NSArray *requestStories = [self.allStoryIDs subarrayWithRange:NSMakeRange(MIN(self.stories.count, self.allStoryIDs.count), MIN(100, self.allStoryIDs.count - self.stories.count))];
+    @weakify(self);
+    [[HNRequestManager manager] getStoryDataByIDs:requestStories kind:p_currentKind hanlder:^(id object, BOOL state) {
+        @strongify(self);
+        if (state == requestSuccess) {
+            NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
+            NSArray *nextStories = [dictionary objectForKey:@"models"];
+            NSArray *tempArray = [self.stories arrayByAddingObjectsFromArray:nextStories];
+            self.stories = [NSMutableArray arrayWithArray:tempArray];
+        } else {
+        }
+        // 结束刷新
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
+    }];
+}
+
+#pragma mark - SetLeftBarButtonItem
 -(void)setupLeftMenuButton{
     self.viewDeckController.leftSize = 180;
     HNLeftViewController *leftController = (HNLeftViewController *)self.viewDeckController.leftController;
@@ -149,7 +150,6 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     [leftButton addTarget:self.viewDeckController action:@selector(toggleLeftView) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"left" style:UIBarButtonItemStylePlain target:self.viewDeckController action:@selector(toggleLeftView)];
 }
 
 - (void)previewBounceLeftView {
@@ -235,6 +235,25 @@ static NSString *const kCellIdentifier = @"HNMainTableViewCell";
     [self showHudWithMessage:@"Loading"];
     @weakify(self);
     [[HNRequestManager manager] getNewStoryIDsWithKind:p_currentKind hanlder:^(id object, BOOL state) {
+        @strongify(self);
+        if (state == requestSuccess) {
+            [self hideHudWithSuccessMessage:@"Completed"];
+            NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:object];
+            self.stories = [dictionary objectForKey:@"models"];
+            self.allStoryIDs = [dictionary objectForKey:@"id"];
+            [self.tableView reloadData];
+        } else {
+            [self hideHudWithErrorMessage:@"Error"];
+        }
+    }];
+}
+
+#pragma mark - RequestData
+- (void)getNewestData:(RequestKind)kind
+{
+    [self showHudWithMessage:@"Loading"];
+    @weakify(self);
+    [[HNRequestManager manager] getNewStoryIDsWithKind:kind hanlder:^(id object, BOOL state) {
         @strongify(self);
         if (state == requestSuccess) {
             [self hideHudWithSuccessMessage:@"Completed"];

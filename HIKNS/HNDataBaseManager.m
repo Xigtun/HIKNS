@@ -39,6 +39,11 @@
                 NSLog(@"%@", error);
             }
         }
+        NSError *error = nil;
+        BOOL success = [[NSURL fileURLWithPath:dbPath] setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:&error];
+        if(!success){
+            NSLog(@"Error excluding %@ from backup %@", [dbPath lastPathComponent], error);
+        }
         self.dbQueue = [FMDatabaseQueue databaseQueueWithPath:dbPath];
     });
 }
