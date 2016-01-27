@@ -19,9 +19,6 @@ PODS:
   - NSDate+TimeAgo (1.0.3)
   - TLYShyNavBar (1.0.0)
   - Toast (3.0)
-  - TOWebViewController (2.2.3):
-    - TOWebViewController/Core (= 2.2.3)
-  - TOWebViewController/Core (2.2.3)
   - UIView+Positioning (1.1)
   - ViewDeck (2.4.1)
 
@@ -39,7 +36,6 @@ DEPENDENCIES:
   - NSDate+TimeAgo
   - TLYShyNavBar
   - Toast
-  - TOWebViewController
   - UIView+Positioning
   - ViewDeck
 
@@ -57,7 +53,6 @@ SPEC CHECKSUMS:
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
   TLYShyNavBar: d313a1c50c58cb7af744829120eaa33ca8a998ce
   Toast: 32c59229abfcf41850162b83bb9259dc84372473
-  TOWebViewController: ca47b9aeefe66acb3353d197dc8270338540b116
   UIView+Positioning: e93fe9e3186d1ed7d60e344aa12787911e902056
   ViewDeck: e4c744cb5383cbae40cf286c6e7246df33962020
 

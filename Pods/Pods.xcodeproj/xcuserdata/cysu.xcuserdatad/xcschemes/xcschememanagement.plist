@@ -59,16 +59,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TOWebViewController-TOWebViewControllerLocalizable.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>TOWebViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Toast.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,6 +87,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2E07540CFDC3E83755A4D4CC35C93D59</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>426BC4549A625B5E1E4200D5261A98BF</key>
 		<dict>
 			<key>primary</key>
@@ -112,12 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6FB4B948FAFE2AC997EF6434B8A92738</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>760842497E736596E7E72CFAE54EE4CF</key>
+		<key>745F0B8F6262C90B3350ADD24D3E14A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,32 +122,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9FC2E0FCF67F320449B116C79FC9B9B8</key>
+		<key>AE8DE723F8CF2B56E15D68AE124561B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8671292CDCFF13324FE7CA675F6D87A</key>
+		<key>C341BD3EF54677831B4572A0D5B8CE87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C44A8C3C47C0E9AEEC0CC4B7F729FF54</key>
+		<key>D500EFEA06C59523EB636CBFD00419B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>EE73FFAD9CBE61014848B4E0852ECAEA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F077F7698F5C94427F2F9B2F89FA5E3C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F87DCE009D9F36D67E0003393D85EA82</key>
 		<dict>
 			<key>primary</key>
 			<true/>

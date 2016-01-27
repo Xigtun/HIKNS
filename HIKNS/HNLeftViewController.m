@@ -47,7 +47,12 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
-    cell.textLabel.text = self.titles[indexPath.row];
+    NSString *celltext = [NSString stringWithFormat:@"   %@", self.titles[indexPath.row]];
+    cell.textLabel.text = celltext;
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+    [cell setSelectedBackgroundView:bgColorView];
+    
     UIImage *image;
     switch (indexPath.row) {
         case 1:

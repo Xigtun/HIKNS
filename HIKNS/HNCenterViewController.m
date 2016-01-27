@@ -10,7 +10,6 @@
 #import <ViewDeck/ViewDeck.h>
 #import <MJRefresh.h>
 #import <UIView+Toast.h>
-#import <TOWebViewController/TOWebViewController.h>
 #import <SafariServices/SafariServices.h>
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 #import "HNRequestManager.h"
@@ -21,6 +20,7 @@
 #import "GTScrollNavigationBar.h"
 #import <UIView+Positioning/UIView+Positioning.h>
 #import "UIViewController+HUD.h"
+#import "DZNWebViewController.h"
 
 @interface HNCenterViewController ()<SFSafariViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate, IIViewDeckControllerDelegate>
 
@@ -41,7 +41,7 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
 static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
 
 
-#pragma mark - LifeCircle
+#pragma mark - LifeCycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,14 +49,10 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
     [self setupLeftMenuButton];
     self.fd_prefersNavigationBarHidden = NO;
     [self.view addSubview:self.tableView];
-    [self.tableView registerNib:[UINib nibWithNibName:@"HNMainTableViewCell" bundle:nil] forCellReuseIdentifier:kCellIdentifier];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kPlaceHolderCellIdentifier];
-    self.tableView.estimatedRowHeight = 150;
+    
     self.tableView.tableFooterView = [UIView new];
     
     self.stories = [[HNDataBaseManager manager] getStoriesWithKind:RequestKindNews];
-    [self.tableView reloadData];
-    
     [self setupRefreshAction];
     self.viewDeckController.delegate = self;
 }
@@ -66,6 +62,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
     [super viewWillAppear:animated];
     self.navigationController.scrollNavigationBar.scrollView = self.tableView;
     self.viewDeckController.navigationController.toolbarHidden = YES;
+    self.navigationController.toolbarHidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -146,7 +143,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
 
 #pragma mark - SetLeftBarButtonItem
 -(void)setupLeftMenuButton{
-    self.viewDeckController.leftSize = 160;
+    self.viewDeckController.leftSize = 150;
     HNLeftViewController *leftController = (HNLeftViewController *)self.viewDeckController.leftController;
     leftController.delegate = self;
     UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 20)];
@@ -194,6 +191,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"HNMain" bundle:nil];
         HNCommentViewController *commentController = [storyBoard instantiateViewControllerWithIdentifier:@"HNCommentViewController"];
         commentController.story = story;
+        [commentController setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:commentController animated:YES];
     } else {
         NSURL *url = [NSURL URLWithString:story.originPath];
@@ -202,7 +200,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
             svc.delegate = self;
             [self presentViewController:svc animated:YES completion:nil];
         } else {
-            TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURL:url];
+            DZNWebViewController *webViewController = [[DZNWebViewController alloc] initWithURL:url];
             [self.navigationController pushViewController:webViewController animated:YES];
         }
     }
@@ -213,6 +211,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
 {
     p_currentKind = kind;
     [self.viewDeckController closeLeftView];
+    self.fd_prefersNavigationBarHidden = NO;
     [self.tableView.mj_header endRefreshing];
     
     NSString *title;
@@ -300,6 +299,9 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
             UITableView *tempTableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
             tempTableView.delegate = self;
             tempTableView.dataSource = self;
+            [tempTableView registerNib:[UINib nibWithNibName:@"HNMainTableViewCell" bundle:nil] forCellReuseIdentifier:kCellIdentifier];
+            [tempTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kPlaceHolderCellIdentifier];
+            tempTableView.estimatedRowHeight = 150;
             tempTableView;
         });
     }
