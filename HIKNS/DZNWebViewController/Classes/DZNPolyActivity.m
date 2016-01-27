@@ -123,6 +123,7 @@
             if (self.type == DZNPolyActivityTypeSafari) {
                 return [[UIApplication sharedApplication] canOpenURL:URL];
             }
+            
             if (self.type == DZNPolyActivityTypeChrome) {
                 return [[UIApplication sharedApplication] canOpenURL:[self chromeURLWithURL:URL]];
             }
@@ -132,7 +133,7 @@
             if (self.type == DZNPolyActivityTypeDolphin) {
                 return [[UIApplication sharedApplication] canOpenURL:[self dolphinURLWithURL:URL]];
             }
-            
+
             break;
 		}
 	}

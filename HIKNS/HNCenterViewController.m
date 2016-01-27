@@ -10,7 +10,6 @@
 #import <ViewDeck/ViewDeck.h>
 #import <MJRefresh.h>
 #import <UIView+Toast.h>
-#import <SafariServices/SafariServices.h>
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 #import "HNRequestManager.h"
 #import "HNDataBaseManager.h"
@@ -21,8 +20,9 @@
 #import <UIView+Positioning/UIView+Positioning.h>
 #import "UIViewController+HUD.h"
 #import "DZNWebViewController.h"
+#import <objc/runtime.h>
 
-@interface HNCenterViewController ()<SFSafariViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate, IIViewDeckControllerDelegate>
+@interface HNCenterViewController ()<UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate, IIViewDeckControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *stories;
 @property (nonatomic, strong) NSMutableArray *allStoryIDs;
@@ -39,7 +39,7 @@
 static NSString *const kCellIdentifier = @"HNMainTableViewCell";
 static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier";
 static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
-
+const char *kViewControllerKey = "kViewControllerKey";
 
 #pragma mark - LifeCycle
 - (void)viewDidLoad
@@ -195,14 +195,8 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
         [self.navigationController pushViewController:commentController animated:YES];
     } else {
         NSURL *url = [NSURL URLWithString:story.originPath];
-        if(NSClassFromString(@"SFSafariViewController")) {
-            SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url entersReaderIfAvailable:YES];
-            svc.delegate = self;
-            [self presentViewController:svc animated:YES completion:nil];
-        } else {
-            DZNWebViewController *webViewController = [[DZNWebViewController alloc] initWithURL:url];
-            [self.navigationController pushViewController:webViewController animated:YES];
-        }
+        DZNWebViewController *webViewController = [[DZNWebViewController alloc] initWithURL:url];
+        [self.navigationController pushViewController:webViewController animated:YES];
     }
 }
 
@@ -252,12 +246,6 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
         });
     }
 }
-
-#pragma mark - SFSafariViewControllerDelegate
-- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
-    [controller dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 #pragma mark - IIViewDeckControllerDelegate
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated

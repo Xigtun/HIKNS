@@ -50,7 +50,6 @@
 		438A984A1C4F729500AFF433 /* HN.db in Resources */ = {isa = PBXBuildFile; fileRef = 438A98491C4F729500AFF433 /* HN.db */; };
 		438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A984C1C4F7D9800AFF433 /* HNStoryModel.m */; };
 		438A98501C4F9C4500AFF433 /* HNDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A984F1C4F9C4500AFF433 /* HNDataBaseManager.m */; };
-		438A985C1C50BFA100AFF433 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438A985B1C50BFA100AFF433 /* SafariServices.framework */; };
 		438A98821C51B63300AFF433 /* HNCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98811C51B63300AFF433 /* HNCenterViewController.m */; };
 		438A988B1C51E14C00AFF433 /* HNMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438A988A1C51E14C00AFF433 /* HNMain.storyboard */; };
 		438A988E1C51E18400AFF433 /* HNCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A988D1C51E18400AFF433 /* HNCommentViewController.m */; };
@@ -151,7 +150,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				437C2D001C5779E900BD09EB /* WebKit.framework in Frameworks */,
-				438A985C1C50BFA100AFF433 /* SafariServices.framework in Frameworks */,
 				B4DE655AB4451F66E1A21EC3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
