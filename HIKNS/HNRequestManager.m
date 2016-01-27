@@ -12,6 +12,8 @@
 
 @implementation HNRequestManager
 
+const NSInteger kRequestCountEachTime = 50;
+
 static NSString *const kTopStories = @"https://hacker-news.firebaseio.com/v0/topstories";
 
 static NSString *const kAskStories = @"https://hacker-news.firebaseio.com/v0/askstories";
@@ -74,8 +76,8 @@ static NSString *const kBestStories = @"https://hacker-news.firebaseio.com/v0/be
 - (void)getStoryDataByIDs:(NSArray *)storyIDs kind:(RequestKind)kind hanlder:(RequestHanlder)complete
 {
     NSArray *shortStories;
-    if (storyIDs.count > 100) {
-        shortStories = [storyIDs subarrayWithRange:NSMakeRange(0, MIN(100, storyIDs.count))];
+    if (storyIDs.count > kRequestCountEachTime) {
+        shortStories = [storyIDs subarrayWithRange:NSMakeRange(0, MIN(kRequestCountEachTime, storyIDs.count))];
     } else {
         shortStories = storyIDs;
     }

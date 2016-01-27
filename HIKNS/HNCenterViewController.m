@@ -22,13 +22,14 @@
 #import <UIView+Positioning/UIView+Positioning.h>
 #import "UIViewController+HUD.h"
 
-@interface HNCenterViewController ()<SFSafariViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate>
+@interface HNCenterViewController ()<SFSafariViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate, IIViewDeckControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *stories;
 @property (nonatomic, strong) NSMutableArray *allStoryIDs;
 
 @property (nonatomic, strong) UITableView *tableView;
 
+@property (nonatomic, strong) UIView *filterView;
 @end
 
 @implementation HNCenterViewController {
@@ -57,6 +58,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
     [self.tableView reloadData];
     
     [self setupRefreshAction];
+    self.viewDeckController.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -126,7 +128,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
         [self.tableView.mj_footer endRefreshing];
         return;
     }
-    NSArray *requestStories = [self.allStoryIDs subarrayWithRange:NSMakeRange(MIN(self.stories.count, self.allStoryIDs.count), MIN(100, self.allStoryIDs.count - self.stories.count))];
+    NSArray *requestStories = [self.allStoryIDs subarrayWithRange:NSMakeRange(MIN(self.stories.count, self.allStoryIDs.count), MIN(kRequestCountEachTime, self.allStoryIDs.count - self.stories.count))];
     @weakify(self);
     [[HNRequestManager manager] getStoryDataByIDs:requestStories kind:p_currentKind hanlder:^(id object, BOOL state) {
         @strongify(self);
@@ -137,7 +139,6 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
             self.stories = [NSMutableArray arrayWithArray:tempArray];
         } else {
         }
-        // 结束刷新
         [self.tableView.mj_footer endRefreshing];
         [self.tableView reloadData];
     }];
@@ -145,7 +146,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
 
 #pragma mark - SetLeftBarButtonItem
 -(void)setupLeftMenuButton{
-    self.viewDeckController.leftSize = 180;
+    self.viewDeckController.leftSize = 160;
     HNLeftViewController *leftController = (HNLeftViewController *)self.viewDeckController.leftController;
     leftController.delegate = self;
     UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 20)];
@@ -162,7 +163,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.stories.count ?: 30;
+    return self.stories.count ?: 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -197,8 +198,7 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
     } else {
         NSURL *url = [NSURL URLWithString:story.originPath];
         if(NSClassFromString(@"SFSafariViewController")) {
-            SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
-            [svc setHidesBottomBarWhenPushed:YES];
+            SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url entersReaderIfAvailable:YES];
             svc.delegate = self;
             [self presentViewController:svc animated:YES completion:nil];
         } else {
@@ -208,16 +208,13 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
     }
 }
 
-#pragma mark - SFSafariViewControllerDelegate
-- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
-    [self dismissViewControllerAnimated:true completion:nil];
-}
-
 #pragma mark - HNLeftControllerDelegate
 - (void)shouldRequestDataWithKind:(RequestKind)kind;
 {
     p_currentKind = kind;
     [self.viewDeckController closeLeftView];
+    [self.tableView.mj_header endRefreshing];
+    
     NSString *title;
     switch (kind) {
         case RequestKindNews:
@@ -257,6 +254,44 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
     }
 }
 
+#pragma mark - SFSafariViewControllerDelegate
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - IIViewDeckControllerDelegate
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    [self.navigationController.view addSubview:self.filterView];
+    self.filterView.alpha = 0;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.filterView.alpha = 0.4;
+    }];
+}
+
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController didOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    self.filterView.alpha = 0.4;
+}
+
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController willCloseViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.filterView.alpha = 0;
+    }];
+}
+
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController didCloseViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    [self.filterView removeFromSuperview];
+}
+
+- (void)filterViewTapped:(id)sender
+{
+    [self.viewDeckController closeLeftView];
+}
+
 #pragma mark - LazyLoading
 - (UITableView *)tableView
 {
@@ -269,6 +304,21 @@ static NSString *const kLastRequestTime = @"kPlaceHolderCellIdentifier";
         });
     }
     return _tableView;
+}
+
+- (UIView *)filterView
+{
+    if (!_filterView) {
+        _filterView = ({
+            UIView *tempView = [[UIView alloc] initWithFrame:self.view.frame];
+            tempView.backgroundColor = [UIColor darkGrayColor];
+            tempView.alpha = 0.4;
+            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(filterViewTapped:)];
+            [tempView addGestureRecognizer:singleTap];
+            tempView;
+        });
+    }
+    return _filterView;
 }
 
 @end

@@ -11,6 +11,8 @@
 
 @interface HNRequestManager : NSObject
 
+extern const NSInteger kRequestCountEachTime;
+
 + (instancetype)manager;
 
 - (void)getNewStoryIDsWithKind:(RequestKind)kind hanlder:(RequestHanlder)complete;
