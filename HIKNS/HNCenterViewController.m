@@ -256,7 +256,7 @@ const char *kViewControllerKey = "kViewControllerKey";
 {
     [self.navigationController.view addSubview:self.filterView];
     self.filterView.alpha = 0;
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.filterView.alpha = 0.4;
     }];
 }
@@ -268,7 +268,7 @@ const char *kViewControllerKey = "kViewControllerKey";
 
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController willCloseViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.filterView.alpha = 0;
     }];
 }
