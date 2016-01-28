@@ -8,7 +8,7 @@
 
 #import "HNCommentViewCell.h"
 #import <NSDate+TimeAgo.h>
-#import "Utils.h"
+#import "UIColor+Hex.h"
 
 @implementation HNCommentViewCell
 
@@ -34,10 +34,18 @@
         
         self.authorName.text = story.author;
         self.commentCount.text = [NSString stringWithFormat:@"%ld", (long)index+1];
-//        NSAttributedString *attributedString= [Utils convertHTMLToAttributedString:story.content];
-//        self.content.attributedText = attributedString;
-        NSString *plainString = [Utils convertHTMLToPlainString:story.content];
-        self.content.text = plainString;
+        
+        NSDictionary *options = @{
+                                  NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType
+                                  };
+        NSDictionary *attributeDict = @{
+                                        NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#7f7e7b"],
+                                        NSFontAttributeName : [UIFont systemFontOfSize:16]
+                                        };
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[story.content dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:nil error:nil];
+        [attributedString addAttributes:attributeDict range:NSMakeRange(0, attributedString.length)];
+        
+        self.content.attributedText = attributedString;
     } else {
         self.timeLabel.text = @"3 hours ago";
         self.authorName.text = @"Weithl";

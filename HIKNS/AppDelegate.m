@@ -36,9 +36,9 @@
     
     [[HNDataBaseManager manager] prepareDataBase];
     
-    [MAThemeKit setupThemeWithPrimaryColor:[MAThemeKit colorWithHexString:@"f9f9f9"] secondaryColor:[UIColor blackColor] fontName:@"HelveticaNeue-Light" lightStatusBar:YES];
-    [MAThemeKit customizeActivityIndicatorColor:[UIColor darkGrayColor]];
-    [MAThemeKit customizeToolbarTintColor:[UIColor darkGrayColor]];
+    [MAThemeKit setupThemeWithPrimaryColor:[MAThemeKit colorWithHexString:@"e8e7e2"] secondaryColor:[MAThemeKit colorWithHexString:@"676664"] fontName:@"HelveticaNeue" lightStatusBar:YES];
+    [MAThemeKit customizeActivityIndicatorColor:[MAThemeKit colorWithHexString:@"676664"]];
+    [MAThemeKit customizeToolbarTintColor:[MAThemeKit colorWithHexString:@"676664"]];
     [[UIButton appearance] setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
                                                          forBarMetrics:UIBarMetricsDefault];

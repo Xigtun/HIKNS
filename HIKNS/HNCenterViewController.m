@@ -21,6 +21,7 @@
 #import "UIViewController+HUD.h"
 #import "DZNWebViewController.h"
 #import <objc/runtime.h>
+#import "UIColor+Hex.h"
 
 @interface HNCenterViewController ()<UITableViewDelegate, UITableViewDataSource, HNLeftControllerDelegate, IIViewDeckControllerDelegate>
 
@@ -48,11 +49,13 @@ const char *kViewControllerKey = "kViewControllerKey";
     self.title = @"News";
     [self setupLeftMenuButton];
     self.fd_prefersNavigationBarHidden = NO;
+    self.view.backgroundColor = [UIColor colorWithHexString:@"#f2f1ed"];
     [self.view addSubview:self.tableView];
     
     self.tableView.tableFooterView = [UIView new];
     
     self.stories = [[HNDataBaseManager manager] getStoriesWithKind:RequestKindNews];
+
     [self setupRefreshAction];
     self.viewDeckController.delegate = self;
 }
@@ -167,6 +170,7 @@ const char *kViewControllerKey = "kViewControllerKey";
 {
     if (IsArrayEmpty(self.stories)) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceHolderCellIdentifier];
+        cell.contentView.backgroundColor = [UIColor colorWithHexString:@"#f2f1ed"];
         return cell;
     }
     HNMainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
@@ -290,6 +294,7 @@ const char *kViewControllerKey = "kViewControllerKey";
             [tempTableView registerNib:[UINib nibWithNibName:@"HNMainTableViewCell" bundle:nil] forCellReuseIdentifier:kCellIdentifier];
             [tempTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kPlaceHolderCellIdentifier];
             tempTableView.estimatedRowHeight = 150;
+            tempTableView.backgroundColor = [UIColor colorWithHexString:@"#f2f1ed"];
             tempTableView;
         });
     }
