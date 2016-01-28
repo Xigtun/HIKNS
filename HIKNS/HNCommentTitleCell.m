@@ -8,7 +8,7 @@
 
 #import "HNCommentTitleCell.h"
 #import <NSDate+TimeAgo.h>
-#import "Utils.h"
+#import "UIColor+Hex.h"
 
 @implementation HNCommentTitleCell
 
@@ -37,8 +37,22 @@
         [self.content removeFromSuperview];
         [self layoutIfNeeded];
     } else {
-        NSString *content = [Utils convertHTMLToPlainString:story.content];
-        self.content.text = content;
+        self.content.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+        NSMutableDictionary *mutableActiveLinkAttributes = [NSMutableDictionary dictionary];
+        [mutableActiveLinkAttributes setObject:[NSNumber numberWithBool:NO] forKey:(NSString *)kCTUnderlineStyleAttributeName];
+        [mutableActiveLinkAttributes setObject:[UIColor greenColor] forKey:(NSString *)kCTForegroundColorAttributeName];
+        self.content.activeLinkAttributes = [NSDictionary dictionaryWithDictionary:mutableActiveLinkAttributes];
+        
+        NSDictionary *options = @{
+                                  NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType
+                                  };
+        NSDictionary *attributeDict = @{
+                                        NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#7f7e7b"],
+                                        NSFontAttributeName : [UIFont systemFontOfSize:16]
+                                        };
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[story.content dataUsingEncoding:NSUnicodeStringEncoding] options:options documentAttributes:nil error:nil];
+        [attributedString addAttributes:attributeDict range:NSMakeRange(0, attributedString.length)];
+        self.content.attributedText = attributedString;
     }
 }
 

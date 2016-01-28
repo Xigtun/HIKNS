@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "HNStoryModel.h"
+#import "TTTAttributedLabel.h"
 
 @interface HNCommentViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *authorName;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentCount;
 
-@property (weak, nonatomic) IBOutlet UILabel *content;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *content;
 
 
 

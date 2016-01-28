@@ -14,8 +14,9 @@
 #import "HNCommentTitleCell.h"
 #import "HNRequestManager.h"
 #import "UIViewController+HUD.h"
+#import "UIColor+Hex.h"
 
-@interface HNCommentViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HNCommentViewController () <UITableViewDelegate, UITableViewDataSource>//TTTAttributedLabelDelegate
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *stories;
@@ -34,20 +35,20 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
     self.extendedLayoutIncludesOpaqueBars=NO;
     self.automaticallyAdjustsScrollViewInsets=NO;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    // Do any additional setup after loading the view.
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navi_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    self.title = self.story.title;
+
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:@"HNCommentViewCell" bundle:nil] forCellReuseIdentifier:kCellIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"HNCommentTitleCell" bundle:nil]
          forCellReuseIdentifier:kTitleCellIdentifier];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kPlaceHolderCellIdentifier];
     self.tableView.estimatedRowHeight = 600;
-    
+    self.tableView.allowsSelection = NO;
     self.shyNavBarManager.scrollView = self.tableView;
     [self requestData];
-    
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navi_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    self.title = self.story.title;
 }
 
 - (void)backAction
@@ -94,18 +95,25 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
     } else {
         if (IsArrayEmpty(self.stories)) {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPlaceHolderCellIdentifier];
+            cell.contentView.backgroundColor = [UIColor colorWithHexString:@"#f6f5f1"];
             return cell;
         }
         HNCommentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
         [cell configureUI:self.stories[indexPath.row] index:indexPath.row];
-        
+        cell.content.userInteractionEnabled = YES;
+//        cell.content.delegate = self;
         return cell;
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//}
+
+//- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url
+//{
+//    NSLog(@"%@", url);
+//}
 
 @end

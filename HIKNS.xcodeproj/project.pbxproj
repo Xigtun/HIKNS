@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		434F0FF11C59B48300D22423 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 434F0FF01C59B48300D22423 /* TTTAttributedLabel.m */; };
 		437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */; };
 		437C2CB91C5725C100BD09EB /* GTScrollNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C2CB81C5725C100BD09EB /* GTScrollNavigationBar.m */; };
 		437C2D001C5779E900BD09EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 437C2CFF1C5779E900BD09EB /* WebKit.framework */; };
@@ -55,14 +56,15 @@
 		438A988E1C51E18400AFF433 /* HNCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A988D1C51E18400AFF433 /* HNCommentViewController.m */; };
 		438A98921C5219F800AFF433 /* HNCommentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98901C5219F800AFF433 /* HNCommentViewCell.m */; };
 		438A98931C5219F800AFF433 /* HNCommentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438A98911C5219F800AFF433 /* HNCommentViewCell.xib */; };
-		438A98961C53530A00AFF433 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98951C53530A00AFF433 /* Utils.m */; };
-		438A98991C53531700AFF433 /* NSString+RemoveTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A98981C53531700AFF433 /* NSString+RemoveTag.m */; };
 		438A989E1C53624300AFF433 /* HNCommentTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A989C1C53624300AFF433 /* HNCommentTitleCell.m */; };
 		438A989F1C53624300AFF433 /* HNCommentTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438A989D1C53624300AFF433 /* HNCommentTitleCell.xib */; };
+		43C88CC61C59C50B00A4FDD3 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C88CC51C59C50B00A4FDD3 /* UIColor+Hex.m */; };
 		B4DE655AB4451F66E1A21EC3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A2DE8709E94FC81C227657 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		434F0FEF1C59B48300D22423 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		434F0FF01C59B48300D22423 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		437C2CB71C5725C100BD09EB /* GTScrollNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTScrollNavigationBar.h; sourceTree = "<group>"; };
@@ -132,13 +134,11 @@
 		438A988F1C5219F800AFF433 /* HNCommentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentViewCell.h; sourceTree = "<group>"; };
 		438A98901C5219F800AFF433 /* HNCommentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentViewCell.m; sourceTree = "<group>"; };
 		438A98911C5219F800AFF433 /* HNCommentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNCommentViewCell.xib; sourceTree = "<group>"; };
-		438A98941C53530A00AFF433 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		438A98951C53530A00AFF433 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
-		438A98971C53531700AFF433 /* NSString+RemoveTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RemoveTag.h"; sourceTree = "<group>"; };
-		438A98981C53531700AFF433 /* NSString+RemoveTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RemoveTag.m"; sourceTree = "<group>"; };
 		438A989B1C53624300AFF433 /* HNCommentTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentTitleCell.h; sourceTree = "<group>"; };
 		438A989C1C53624300AFF433 /* HNCommentTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentTitleCell.m; sourceTree = "<group>"; };
 		438A989D1C53624300AFF433 /* HNCommentTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNCommentTitleCell.xib; sourceTree = "<group>"; };
+		43C88CC41C59C50B00A4FDD3 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		43C88CC51C59C50B00A4FDD3 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		B0CA40DE202D60E77F338FB4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B6116424DF9DDE518850E3AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B9A2DE8709E94FC81C227657 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		434F0FEE1C59B48300D22423 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				434F0FEF1C59B48300D22423 /* TTTAttributedLabel.h */,
+				434F0FF01C59B48300D22423 /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 		437C2CB61C5725C100BD09EB /* GTScrollNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,16 +330,23 @@
 		438A98511C50761500AFF433 /* Vandor */ = {
 			isa = PBXGroup;
 			children = (
+				43C88CC31C59C50B00A4FDD3 /* EDColor */,
+				434F0FEE1C59B48300D22423 /* TTTAttributedLabel */,
 				437FDE361C58A10B00B13580 /* DZNWebViewController */,
 				437C2CB61C5725C100BD09EB /* GTScrollNavigationBar */,
 				437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */,
 				437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */,
-				438A98941C53530A00AFF433 /* Utils.h */,
-				438A98951C53530A00AFF433 /* Utils.m */,
-				438A98971C53531700AFF433 /* NSString+RemoveTag.h */,
-				438A98981C53531700AFF433 /* NSString+RemoveTag.m */,
 			);
 			name = Vandor;
+			sourceTree = "<group>";
+		};
+		43C88CC31C59C50B00A4FDD3 /* EDColor */ = {
+			isa = PBXGroup;
+			children = (
+				43C88CC41C59C50B00A4FDD3 /* UIColor+Hex.h */,
+				43C88CC51C59C50B00A4FDD3 /* UIColor+Hex.m */,
+			);
+			path = EDColor;
 			sourceTree = "<group>";
 		};
 		69EDD6C2ADCAE9E88CAD565D /* Pods */ = {
@@ -387,7 +403,7 @@
 				TargetAttributes = {
 					438A98191C4F23E500AFF433 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = P8Z7H7NDLK;
+						DevelopmentTeam = MAC54F746A;
 					};
 				};
 			};
@@ -521,13 +537,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */,
+				43C88CC61C59C50B00A4FDD3 /* UIColor+Hex.m in Sources */,
 				437C2CB91C5725C100BD09EB /* GTScrollNavigationBar.m in Sources */,
 				438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */,
-				438A98991C53531700AFF433 /* NSString+RemoveTag.m in Sources */,
 				438A98921C5219F800AFF433 /* HNCommentViewCell.m in Sources */,
-				438A98961C53530A00AFF433 /* Utils.m in Sources */,
 				437FDE5C1C58A10B00B13580 /* DZNPolyActivity.m in Sources */,
 				437FDE5D1C58A10B00B13580 /* DZNWebView.m in Sources */,
+				434F0FF11C59B48300D22423 /* TTTAttributedLabel.m in Sources */,
 				438A98391C4F2FC600AFF433 /* HNLeftViewController.m in Sources */,
 				438A98821C51B63300AFF433 /* HNCenterViewController.m in Sources */,
 				438A983C1C4F3E4600AFF433 /* HNRequestManager.m in Sources */,
@@ -582,8 +598,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: cysu1077@gmail.com (M83CH4P5AC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: cysu1077@gmail.com (M83CH4P5AC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -607,7 +623,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "18176ff9-1c57-468b-9cbf-27c657efe316";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -630,7 +646,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: cysu1077@gmail.com (M83CH4P5AC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -648,7 +664,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "18176ff9-1c57-468b-9cbf-27c657efe316";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -660,17 +676,17 @@
 			baseConfigurationReference = B0CA40DE202D60E77F338FB4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ChenBin ChenBin (875RLFUK4K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ChenBin ChenBin (875RLFUK4K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HIKNS/HNPrefix.pch;
 				INFOPLIST_FILE = HIKNS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNS1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "366a4fb6-b5d9-419b-8942-20162bc142d0";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -680,16 +696,16 @@
 			baseConfigurationReference = B6116424DF9DDE518850E3AA /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ChenBin ChenBin (P8Z7H7NDLK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ChenBin ChenBin (P8Z7H7NDLK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HIKNS/HNPrefix.pch;
 				INFOPLIST_FILE = HIKNS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNS1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "366a4fb6-b5d9-419b-8942-20162bc142d0";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

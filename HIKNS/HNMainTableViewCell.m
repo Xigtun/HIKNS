@@ -9,6 +9,7 @@
 #import "HNMainTableViewCell.h"
 #import <NSDate+TimeAgo.h>
 #import <UIView+Positioning.h>
+#import "UIColor+Hex.h"
 
 @implementation HNMainTableViewCell
 
@@ -20,6 +21,7 @@
     
     self.commentCount.layer.cornerRadius = CGRectGetHeight(self.commentCount.frame) * 0.5;
     self.commentCount.layer.masksToBounds = YES;
+    self.contentView.backgroundColor = [UIColor colorWithHexString:@"#f2f1ed"];
 }
 
 - (void)configureUI:(HNStoryModel *)story
@@ -59,8 +61,9 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
+    self.contentView.backgroundColor = [UIColor colorWithHexString:@"#f2f1ed"];
+
     self.commentCount.hidden = NO;
-    
     self.type.text = @"";
     self.author.text = @"";
     self.title.text = @"";

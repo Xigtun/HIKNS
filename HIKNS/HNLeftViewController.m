@@ -7,6 +7,7 @@
 //
 
 #import "HNLeftViewController.h"
+#import "UIColor+Hex.h"
 
 @interface HNLeftViewController() <UITableViewDelegate, UITableViewDataSource>
 
@@ -26,10 +27,8 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
     [super viewDidLoad];
     
     self.titles = @[@"  ", @"News", @"Ask", @"Show", @"Jobs", @"Best"];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"#f2f1ed"];
     self.tableView.tableFooterView = [UIView new];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
     [self.view addSubview:self.tableView];
 }
 
@@ -49,10 +48,11 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     NSString *celltext = [NSString stringWithFormat:@"   %@", self.titles[indexPath.row]];
     cell.textLabel.text = celltext;
+    cell.textLabel.textColor = [UIColor colorWithHexString:@"#676664"];
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+    bgColorView.backgroundColor = [UIColor colorWithHexString:@"#e8e7e3"];
     [cell setSelectedBackgroundView:bgColorView];
-    
+    cell.contentView.backgroundColor = [UIColor colorWithHexString:@"#f2f1ed"];
     UIImage *image;
     switch (indexPath.row) {
         case 1:
@@ -111,6 +111,8 @@ static NSString *const kCellIdentifier = @"UITableViewCellTitle";
             tempTableView.scrollEnabled = NO;
             tempTableView.delegate = self;
             tempTableView.dataSource = self;
+            tempTableView.backgroundColor = [UIColor colorWithHexString:@"#f2f1ed"];
+            [tempTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
             tempTableView;
         });
     }
