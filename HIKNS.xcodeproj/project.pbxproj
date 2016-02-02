@@ -403,7 +403,7 @@
 				TargetAttributes = {
 					438A98191C4F23E500AFF433 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = MAC54F746A;
+						DevelopmentTeam = P8Z7H7NDLK;
 					};
 				};
 			};
@@ -676,17 +676,17 @@
 			baseConfigurationReference = B0CA40DE202D60E77F338FB4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HIKNS/HNPrefix.pch;
 				INFOPLIST_FILE = HIKNS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNS1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "366a4fb6-b5d9-419b-8942-20162bc142d0";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -696,16 +696,16 @@
 			baseConfigurationReference = B6116424DF9DDE518850E3AA /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ChenBin ChenBin (P8Z7H7NDLK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ChenBin ChenBin (P8Z7H7NDLK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HIKNS/HNPrefix.pch;
 				INFOPLIST_FILE = HIKNS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNS1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "366a4fb6-b5d9-419b-8942-20162bc142d0";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
