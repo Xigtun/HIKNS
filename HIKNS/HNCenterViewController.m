@@ -200,6 +200,8 @@ const char *kViewControllerKey = "kViewControllerKey";
     } else {
         NSURL *url = [NSURL URLWithString:story.originPath];
         DZNWebViewController *webViewController = [[DZNWebViewController alloc] initWithURL:url];
+//        UIImage *tempImage = [UIImage imageNamed:@"nav_show"];
+//        webViewController.actionButtonImage = tempImage;
         [self.navigationController pushViewController:webViewController animated:YES];
     }
 }

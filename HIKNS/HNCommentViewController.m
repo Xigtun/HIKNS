@@ -16,6 +16,7 @@
 #import "UIViewController+HUD.h"
 #import "UIColor+Hex.h"
 #import "DZNWebViewController.h"
+#import <ViewDeck/ViewDeck.h>
 
 @interface HNCommentViewController () <UITableViewDelegate, UITableViewDataSource, TTTAttributedLabelDelegate>
 
