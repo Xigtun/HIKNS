@@ -15,8 +15,9 @@
 #import "HNRequestManager.h"
 #import "UIViewController+HUD.h"
 #import "UIColor+Hex.h"
+#import "DZNWebViewController.h"
 
-@interface HNCommentViewController () <UITableViewDelegate, UITableViewDataSource>//TTTAttributedLabelDelegate
+@interface HNCommentViewController () <UITableViewDelegate, UITableViewDataSource, TTTAttributedLabelDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *stories;
@@ -49,6 +50,12 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
     self.tableView.allowsSelection = NO;
     self.shyNavBarManager.scrollView = self.tableView;
     [self requestData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 - (void)backAction
@@ -91,6 +98,7 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
     if (indexPath.section == 0) {
         HNCommentTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:kTitleCellIdentifier];
         [cell configureUIWithModel:self.story];
+        cell.content.delegate = self;
         return cell;
     } else {
         if (IsArrayEmpty(self.stories)) {
@@ -101,19 +109,16 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
         HNCommentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
         [cell configureUI:self.stories[indexPath.row] index:indexPath.row];
         cell.content.userInteractionEnabled = YES;
-//        cell.content.delegate = self;
+        cell.content.delegate = self;
         return cell;
     }
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//}
-
-//- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url
-//{
-//    NSLog(@"%@", url);
-//}
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url
+{
+    NSLog(@"%@", url);
+    DZNWebViewController *webViewController = [[DZNWebViewController alloc] initWithURL:url];
+    [self.navigationController pushViewController:webViewController animated:YES];
+}
 
 @end

@@ -34,7 +34,7 @@
         
         self.authorName.text = story.author;
         self.commentCount.text = [NSString stringWithFormat:@"%ld", (long)index+1];
-        
+        self.content.enabledTextCheckingTypes = NSTextCheckingTypeLink;
         NSDictionary *options = @{
                                   NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType
                                   };
@@ -46,6 +46,18 @@
         [attributedString addAttributes:attributeDict range:NSMakeRange(0, attributedString.length)];
         
         self.content.attributedText = attributedString;
+        
+        
+        NSDataDetector* detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+        NSArray* matches = [detector matchesInString:attributedString.string options:0 range:NSMakeRange(0, [attributedString.string length])];
+        if (matches.count > 0) {
+            for (NSTextCheckingResult *result in matches) {
+                [self.content addLinkWithTextCheckingResult:result attributes:@{
+                                                                                NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#7f7e7b"],
+                                                                                NSFontAttributeName : [UIFont systemFontOfSize:16]
+                                                                                }];
+            }
+        }
     } else {
         self.timeLabel.text = @"3 hours ago";
         self.authorName.text = @"Weithl";
@@ -62,5 +74,6 @@
     self.content.text = @"";
     self.commentCount.text = @"";
 }
+
 
 @end

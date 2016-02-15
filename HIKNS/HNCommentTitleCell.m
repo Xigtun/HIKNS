@@ -53,6 +53,17 @@
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[story.content dataUsingEncoding:NSUnicodeStringEncoding] options:options documentAttributes:nil error:nil];
         [attributedString addAttributes:attributeDict range:NSMakeRange(0, attributedString.length)];
         self.content.attributedText = attributedString;
+        
+        NSDataDetector* detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+        NSArray* matches = [detector matchesInString:attributedString.string options:0 range:NSMakeRange(0, [attributedString.string length])];
+        if (matches.count > 0) {
+            for (NSTextCheckingResult *result in matches) {
+                [self.content addLinkWithTextCheckingResult:result attributes:@{
+                                                                                NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#7f7e7b"],
+                                                                                NSFontAttributeName : [UIFont systemFontOfSize:16]
+                                                                                }];
+            }
+        }
     }
 }
 
