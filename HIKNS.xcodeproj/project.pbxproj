@@ -59,6 +59,8 @@
 		438A989E1C53624300AFF433 /* HNCommentTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A989C1C53624300AFF433 /* HNCommentTitleCell.m */; };
 		438A989F1C53624300AFF433 /* HNCommentTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438A989D1C53624300AFF433 /* HNCommentTitleCell.xib */; };
 		43C88CC61C59C50B00A4FDD3 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C88CC51C59C50B00A4FDD3 /* UIColor+Hex.m */; };
+		43E639A41C71D24100A5E14E /* HNReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E639A31C71D24100A5E14E /* HNReplyViewController.m */; };
+		43E639A71C71D32700A5E14E /* HNReplyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E639A61C71D32700A5E14E /* HNReplyViewCell.m */; };
 		B4DE655AB4451F66E1A21EC3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A2DE8709E94FC81C227657 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,10 @@
 		438A989D1C53624300AFF433 /* HNCommentTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNCommentTitleCell.xib; sourceTree = "<group>"; };
 		43C88CC41C59C50B00A4FDD3 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		43C88CC51C59C50B00A4FDD3 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		43E639A21C71D24100A5E14E /* HNReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNReplyViewController.h; sourceTree = "<group>"; };
+		43E639A31C71D24100A5E14E /* HNReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNReplyViewController.m; sourceTree = "<group>"; };
+		43E639A51C71D32700A5E14E /* HNReplyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNReplyViewCell.h; sourceTree = "<group>"; };
+		43E639A61C71D32700A5E14E /* HNReplyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNReplyViewCell.m; sourceTree = "<group>"; };
 		B0CA40DE202D60E77F338FB4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B6116424DF9DDE518850E3AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B9A2DE8709E94FC81C227657 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,6 +292,8 @@
 				438A98381C4F2FC600AFF433 /* HNLeftViewController.m */,
 				438A988C1C51E18400AFF433 /* HNCommentViewController.h */,
 				438A988D1C51E18400AFF433 /* HNCommentViewController.m */,
+				43E639A21C71D24100A5E14E /* HNReplyViewController.h */,
+				43E639A31C71D24100A5E14E /* HNReplyViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -303,6 +311,8 @@
 				438A989B1C53624300AFF433 /* HNCommentTitleCell.h */,
 				438A989C1C53624300AFF433 /* HNCommentTitleCell.m */,
 				438A989D1C53624300AFF433 /* HNCommentTitleCell.xib */,
+				43E639A51C71D32700A5E14E /* HNReplyViewCell.h */,
+				43E639A61C71D32700A5E14E /* HNReplyViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -537,6 +547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */,
+				43E639A71C71D32700A5E14E /* HNReplyViewCell.m in Sources */,
 				43C88CC61C59C50B00A4FDD3 /* UIColor+Hex.m in Sources */,
 				437C2CB91C5725C100BD09EB /* GTScrollNavigationBar.m in Sources */,
 				438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */,
@@ -553,6 +564,7 @@
 				438A98221C4F23E500AFF433 /* AppDelegate.m in Sources */,
 				438A988E1C51E18400AFF433 /* HNCommentViewController.m in Sources */,
 				437FDE5E1C58A10B00B13580 /* DZNWebViewController.m in Sources */,
+				43E639A41C71D24100A5E14E /* HNReplyViewController.m in Sources */,
 				438A981F1C4F23E500AFF433 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
