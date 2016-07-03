@@ -1,38 +1,38 @@
 PODS:
-  - Crashlytics (3.6.0):
+  - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.4)
+  - Fabric (1.6.7)
   - FDFullscreenPopGesture (1.1)
-  - Firebase (2.5.0)
-  - FMDB (2.6):
-    - FMDB/standard (= 2.6)
-  - FMDB/standard (2.6)
-  - Mantle (2.0.6):
-    - Mantle/extobjc (= 2.0.6)
-  - Mantle/extobjc (2.0.6)
+  - FDStackView (1.0)
+  - Firebase (2.5.1)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - Mantle (2.0.7):
+    - Mantle/extobjc (= 2.0.7)
+  - Mantle/extobjc (2.0.7)
+  - Masonry (1.0.0)
   - MAThemeKit (1.0)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.0)
-  - MTLFMDBAdapter (0.2.0):
-    - FMDB (~> 2.3)
-    - Mantle (~> 2.0)
-  - NSDate+TimeAgo (1.0.3)
+  - NSDate+TimeAgo (1.0.6)
   - TLYShyNavBar (1.0.0)
   - Toast (3.0)
   - UIView+Positioning (1.1)
-  - ViewDeck (2.4.1)
+  - ViewDeck (2.4.2)
 
 DEPENDENCIES:
   - Crashlytics
   - Fabric
   - FDFullscreenPopGesture
+  - FDStackView
   - Firebase (>= 2.5.0)
   - FMDB
   - Mantle
+  - Masonry
   - MAThemeKit
   - MBProgressHUD
   - MJRefresh
-  - MTLFMDBAdapter
   - NSDate+TimeAgo
   - TLYShyNavBar
   - Toast
@@ -40,20 +40,23 @@ DEPENDENCIES:
   - ViewDeck
 
 SPEC CHECKSUMS:
-  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
-  Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
-  Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
-  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
-  Mantle: 299966b00759634931699f69cb6a30b9239b944d
+  FDStackView: 3a4bbe0ce9c35e974246a585168b9da8c32213f1
+  Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
+  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   MAThemeKit: 559acc98ceadc051cccb1b6bb0c4ca28475eb021
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
-  MTLFMDBAdapter: 8957b2fdb61cbf93ddd8739641310f835777e490
-  NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
+  NSDate+TimeAgo: 35601c619b2d59290055e4fe76e61d97677a2360
   TLYShyNavBar: d313a1c50c58cb7af744829120eaa33ca8a998ce
   Toast: 32c59229abfcf41850162b83bb9259dc84372473
   UIView+Positioning: e93fe9e3186d1ed7d60e344aa12787911e902056
-  ViewDeck: e4c744cb5383cbae40cf286c6e7246df33962020
+  ViewDeck: 0b7b83bc2782a20dfb76207d0a2e8c5e6a6d182d
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 5d4a6185a84b8014457c49fdb1bb4d741fd25244
+
+COCOAPODS: 1.0.0

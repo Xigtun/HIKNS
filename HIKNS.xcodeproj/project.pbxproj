@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184153DB1D28A07C00FAB950 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 184153D91D28A07C00FAB950 /* HexColors.m */; };
+		184153E11D28A5E400FAB950 /* HNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 184153E01D28A5E400FAB950 /* HNUtils.m */; };
+		184153E41D28AE9600FAB950 /* HNLaunchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 184153E31D28AE9600FAB950 /* HNLaunchService.m */; };
 		434F0FF11C59B48300D22423 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 434F0FF01C59B48300D22423 /* TTTAttributedLabel.m */; };
 		437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */; };
 		437C2CB91C5725C100BD09EB /* GTScrollNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C2CB81C5725C100BD09EB /* GTScrollNavigationBar.m */; };
@@ -58,13 +61,18 @@
 		438A98931C5219F800AFF433 /* HNCommentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438A98911C5219F800AFF433 /* HNCommentViewCell.xib */; };
 		438A989E1C53624300AFF433 /* HNCommentTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A989C1C53624300AFF433 /* HNCommentTitleCell.m */; };
 		438A989F1C53624300AFF433 /* HNCommentTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438A989D1C53624300AFF433 /* HNCommentTitleCell.xib */; };
-		43C88CC61C59C50B00A4FDD3 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C88CC51C59C50B00A4FDD3 /* UIColor+Hex.m */; };
 		43E639A41C71D24100A5E14E /* HNReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E639A31C71D24100A5E14E /* HNReplyViewController.m */; };
 		43E639A71C71D32700A5E14E /* HNReplyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E639A61C71D32700A5E14E /* HNReplyViewCell.m */; };
-		B4DE655AB4451F66E1A21EC3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A2DE8709E94FC81C227657 /* libPods.a */; };
+		A0B5CC69A2E2388528BB7F72 /* libPods-HIKNS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79EFD8E755E238271B791795 /* libPods-HIKNS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		184153D81D28A07C00FAB950 /* HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexColors.h; sourceTree = "<group>"; };
+		184153D91D28A07C00FAB950 /* HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexColors.m; sourceTree = "<group>"; };
+		184153DF1D28A5E400FAB950 /* HNUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNUtils.h; sourceTree = "<group>"; };
+		184153E01D28A5E400FAB950 /* HNUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNUtils.m; sourceTree = "<group>"; };
+		184153E21D28AE9600FAB950 /* HNLaunchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLaunchService.h; sourceTree = "<group>"; };
+		184153E31D28AE9600FAB950 /* HNLaunchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNLaunchService.m; sourceTree = "<group>"; };
 		434F0FEF1C59B48300D22423 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		434F0FF01C59B48300D22423 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -139,15 +147,13 @@
 		438A989B1C53624300AFF433 /* HNCommentTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentTitleCell.h; sourceTree = "<group>"; };
 		438A989C1C53624300AFF433 /* HNCommentTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentTitleCell.m; sourceTree = "<group>"; };
 		438A989D1C53624300AFF433 /* HNCommentTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNCommentTitleCell.xib; sourceTree = "<group>"; };
-		43C88CC41C59C50B00A4FDD3 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
-		43C88CC51C59C50B00A4FDD3 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		43E639A21C71D24100A5E14E /* HNReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNReplyViewController.h; sourceTree = "<group>"; };
 		43E639A31C71D24100A5E14E /* HNReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNReplyViewController.m; sourceTree = "<group>"; };
 		43E639A51C71D32700A5E14E /* HNReplyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNReplyViewCell.h; sourceTree = "<group>"; };
 		43E639A61C71D32700A5E14E /* HNReplyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNReplyViewCell.m; sourceTree = "<group>"; };
-		B0CA40DE202D60E77F338FB4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		B6116424DF9DDE518850E3AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		B9A2DE8709E94FC81C227657 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		79EFD8E755E238271B791795 /* libPods-HIKNS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HIKNS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89421CFEB16E687E54A5CAE3 /* Pods-HIKNS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIKNS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HIKNS/Pods-HIKNS.debug.xcconfig"; sourceTree = "<group>"; };
+		BA68DB03E4F698464ACDFD9E /* Pods-HIKNS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIKNS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HIKNS/Pods-HIKNS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,13 +162,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				437C2D001C5779E900BD09EB /* WebKit.framework in Frameworks */,
-				B4DE655AB4451F66E1A21EC3 /* libPods.a in Frameworks */,
+				A0B5CC69A2E2388528BB7F72 /* libPods-HIKNS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184153DC1D28A08900FAB950 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		184153DD1D28A0B400FAB950 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				184153D81D28A07C00FAB950 /* HexColors.h */,
+				184153D91D28A07C00FAB950 /* HexColors.m */,
+				437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */,
+				437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		184153DE1D28A5D100FAB950 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				184153E21D28AE9600FAB950 /* HNLaunchService.h */,
+				184153E31D28AE9600FAB950 /* HNLaunchService.m */,
+				184153DF1D28A5E400FAB950 /* HNUtils.h */,
+				184153E01D28A5E400FAB950 /* HNUtils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		434F0FEE1C59B48300D22423 /* TTTAttributedLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,10 +274,10 @@
 		438A98111C4F23E500AFF433 = {
 			isa = PBXGroup;
 			children = (
-				438A981C1C4F23E500AFF433 /* HIKNS */,
-				438A981B1C4F23E500AFF433 /* Products */,
-				69EDD6C2ADCAE9E88CAD565D /* Pods */,
 				7D94DE0A0985148C4AFD6C5C /* Frameworks */,
+				438A981C1C4F23E500AFF433 /* HIKNS */,
+				458B5285D2A5E5B7854C3C02 /* Pods */,
+				438A981B1C4F23E500AFF433 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -257,12 +292,15 @@
 		438A981C1C4F23E500AFF433 /* HIKNS */ = {
 			isa = PBXGroup;
 			children = (
-				438A98511C50761500AFF433 /* Vandor */,
+				184153DD1D28A0B400FAB950 /* Category */,
+				184153DC1D28A08900FAB950 /* Constant */,
+				438A983D1C4F5DAD00AFF433 /* Controller */,
 				438A98401C4F5DBF00AFF433 /* DataAccess */,
 				438A983F1C4F5DB800AFF433 /* Model */,
-				438A983E1C4F5DB300AFF433 /* View */,
-				438A983D1C4F5DAD00AFF433 /* Controller */,
 				438A981D1C4F23E500AFF433 /* Supporting Files */,
+				184153DE1D28A5D100FAB950 /* Utils */,
+				438A98511C50761500AFF433 /* Vandor */,
+				438A983E1C4F5DB300AFF433 /* View */,
 			);
 			path = HIKNS;
 			sourceTree = "<group>";
@@ -270,17 +308,17 @@
 		438A981D1C4F23E500AFF433 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				438A98491C4F729500AFF433 /* HN.db */,
 				438A98201C4F23E500AFF433 /* AppDelegate.h */,
 				438A98211C4F23E500AFF433 /* AppDelegate.m */,
+				438A98291C4F23E500AFF433 /* Assets.xcassets */,
+				438A98491C4F729500AFF433 /* HN.db */,
 				438A98891C51D66800AFF433 /* HNMacro.h */,
 				438A98481C4F6BFB00AFF433 /* HNPrefix.pch */,
-				438A98291C4F23E500AFF433 /* Assets.xcassets */,
-				438A982B1C4F23E500AFF433 /* LaunchScreen.storyboard */,
 				438A982E1C4F23E500AFF433 /* Info.plist */,
+				438A982B1C4F23E500AFF433 /* LaunchScreen.storyboard */,
 				438A981E1C4F23E500AFF433 /* main.m */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		438A983D1C4F5DAD00AFF433 /* Controller */ = {
@@ -288,33 +326,33 @@
 			children = (
 				438A98801C51B63300AFF433 /* HNCenterViewController.h */,
 				438A98811C51B63300AFF433 /* HNCenterViewController.m */,
-				438A98371C4F2FC600AFF433 /* HNLeftViewController.h */,
-				438A98381C4F2FC600AFF433 /* HNLeftViewController.m */,
 				438A988C1C51E18400AFF433 /* HNCommentViewController.h */,
 				438A988D1C51E18400AFF433 /* HNCommentViewController.m */,
+				438A98371C4F2FC600AFF433 /* HNLeftViewController.h */,
+				438A98381C4F2FC600AFF433 /* HNLeftViewController.m */,
 				43E639A21C71D24100A5E14E /* HNReplyViewController.h */,
 				43E639A31C71D24100A5E14E /* HNReplyViewController.m */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		438A983E1C4F5DB300AFF433 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				438A98421C4F5E2D00AFF433 /* HNMainTableViewCell.h */,
-				438A98431C4F5E2D00AFF433 /* HNMainTableViewCell.m */,
-				438A98441C4F5E2D00AFF433 /* HNMainTableViewCell.xib */,
-				438A988A1C51E14C00AFF433 /* HNMain.storyboard */,
-				438A988F1C5219F800AFF433 /* HNCommentViewCell.h */,
-				438A98901C5219F800AFF433 /* HNCommentViewCell.m */,
-				438A98911C5219F800AFF433 /* HNCommentViewCell.xib */,
 				438A989B1C53624300AFF433 /* HNCommentTitleCell.h */,
 				438A989C1C53624300AFF433 /* HNCommentTitleCell.m */,
 				438A989D1C53624300AFF433 /* HNCommentTitleCell.xib */,
+				438A988F1C5219F800AFF433 /* HNCommentViewCell.h */,
+				438A98901C5219F800AFF433 /* HNCommentViewCell.m */,
+				438A98911C5219F800AFF433 /* HNCommentViewCell.xib */,
+				438A988A1C51E14C00AFF433 /* HNMain.storyboard */,
+				438A98421C4F5E2D00AFF433 /* HNMainTableViewCell.h */,
+				438A98431C4F5E2D00AFF433 /* HNMainTableViewCell.m */,
+				438A98441C4F5E2D00AFF433 /* HNMainTableViewCell.xib */,
 				43E639A51C71D32700A5E14E /* HNReplyViewCell.h */,
 				43E639A61C71D32700A5E14E /* HNReplyViewCell.m */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		438A983F1C4F5DB800AFF433 /* Model */ = {
@@ -323,47 +361,35 @@
 				438A984B1C4F7D9800AFF433 /* HNStoryModel.h */,
 				438A984C1C4F7D9800AFF433 /* HNStoryModel.m */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		438A98401C4F5DBF00AFF433 /* DataAccess */ = {
 			isa = PBXGroup;
 			children = (
-				438A983A1C4F3E4600AFF433 /* HNRequestManager.h */,
-				438A983B1C4F3E4600AFF433 /* HNRequestManager.m */,
 				438A984E1C4F9C4500AFF433 /* HNDataBaseManager.h */,
 				438A984F1C4F9C4500AFF433 /* HNDataBaseManager.m */,
+				438A983A1C4F3E4600AFF433 /* HNRequestManager.h */,
+				438A983B1C4F3E4600AFF433 /* HNRequestManager.m */,
 			);
-			name = DataAccess;
+			path = DataAccess;
 			sourceTree = "<group>";
 		};
 		438A98511C50761500AFF433 /* Vandor */ = {
 			isa = PBXGroup;
 			children = (
-				43C88CC31C59C50B00A4FDD3 /* EDColor */,
-				434F0FEE1C59B48300D22423 /* TTTAttributedLabel */,
 				437FDE361C58A10B00B13580 /* DZNWebViewController */,
 				437C2CB61C5725C100BD09EB /* GTScrollNavigationBar */,
-				437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */,
-				437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */,
+				434F0FEE1C59B48300D22423 /* TTTAttributedLabel */,
 			);
-			name = Vandor;
+			path = Vandor;
 			sourceTree = "<group>";
 		};
-		43C88CC31C59C50B00A4FDD3 /* EDColor */ = {
+		458B5285D2A5E5B7854C3C02 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				43C88CC41C59C50B00A4FDD3 /* UIColor+Hex.h */,
-				43C88CC51C59C50B00A4FDD3 /* UIColor+Hex.m */,
-			);
-			path = EDColor;
-			sourceTree = "<group>";
-		};
-		69EDD6C2ADCAE9E88CAD565D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B0CA40DE202D60E77F338FB4 /* Pods.debug.xcconfig */,
-				B6116424DF9DDE518850E3AA /* Pods.release.xcconfig */,
+				89421CFEB16E687E54A5CAE3 /* Pods-HIKNS.debug.xcconfig */,
+				BA68DB03E4F698464ACDFD9E /* Pods-HIKNS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -373,7 +399,7 @@
 			children = (
 				437C2CFF1C5779E900BD09EB /* WebKit.framework */,
 				438A985B1C50BFA100AFF433 /* SafariServices.framework */,
-				B9A2DE8709E94FC81C227657 /* libPods.a */,
+				79EFD8E755E238271B791795 /* libPods-HIKNS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -385,13 +411,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 438A98311C4F23E500AFF433 /* Build configuration list for PBXNativeTarget "HIKNS" */;
 			buildPhases = (
-				F4BBFE111FEBD83F28BEB73E /* Check Pods Manifest.lock */,
+				1DBFFB893B109C03CA7BC4DC /* 📦 Check Pods Manifest.lock */,
 				438A98161C4F23E500AFF433 /* Sources */,
 				438A98171C4F23E500AFF433 /* Frameworks */,
 				438A98181C4F23E500AFF433 /* Resources */,
-				2ADB47B339B9F4CA6365D67E /* Embed Pods Frameworks */,
-				A8B243097EC1AA74965BE7A8 /* Copy Pods Resources */,
 				437C2CB51C5711A700BD09EB /* ShellScript */,
+				CD124AF8E4B1E94E658DD7F3 /* 📦 Embed Pods Frameworks */,
+				D8C83994D598EF042C92B123 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -413,7 +439,7 @@
 				TargetAttributes = {
 					438A98191C4F23E500AFF433 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = MAC54F746A;
+						DevelopmentTeam = P8Z7H7NDLK;
 					};
 				};
 			};
@@ -481,19 +507,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2ADB47B339B9F4CA6365D67E /* Embed Pods Frameworks */ = {
+		1DBFFB893B109C03CA7BC4DC /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		437C2CB51C5711A700BD09EB /* ShellScript */ = {
@@ -509,34 +535,34 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7d7661a878e0686532124c615ffc70b8484d111c 498ebd3d404d5f084373ae305059403c7c0f1ae595a31c4fcd2a5712b1ecdcbb";
 		};
-		A8B243097EC1AA74965BE7A8 /* Copy Pods Resources */ = {
+		CD124AF8E4B1E94E658DD7F3 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HIKNS/Pods-HIKNS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F4BBFE111FEBD83F28BEB73E /* Check Pods Manifest.lock */ = {
+		D8C83994D598EF042C92B123 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HIKNS/Pods-HIKNS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -548,7 +574,6 @@
 			files = (
 				437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */,
 				43E639A71C71D32700A5E14E /* HNReplyViewCell.m in Sources */,
-				43C88CC61C59C50B00A4FDD3 /* UIColor+Hex.m in Sources */,
 				437C2CB91C5725C100BD09EB /* GTScrollNavigationBar.m in Sources */,
 				438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */,
 				438A98921C5219F800AFF433 /* HNCommentViewCell.m in Sources */,
@@ -559,11 +584,14 @@
 				438A98821C51B63300AFF433 /* HNCenterViewController.m in Sources */,
 				438A983C1C4F3E4600AFF433 /* HNRequestManager.m in Sources */,
 				438A98501C4F9C4500AFF433 /* HNDataBaseManager.m in Sources */,
+				184153E41D28AE9600FAB950 /* HNLaunchService.m in Sources */,
 				438A98451C4F5E2D00AFF433 /* HNMainTableViewCell.m in Sources */,
 				438A989E1C53624300AFF433 /* HNCommentTitleCell.m in Sources */,
+				184153DB1D28A07C00FAB950 /* HexColors.m in Sources */,
 				438A98221C4F23E500AFF433 /* AppDelegate.m in Sources */,
 				438A988E1C51E18400AFF433 /* HNCommentViewController.m in Sources */,
 				437FDE5E1C58A10B00B13580 /* DZNWebViewController.m in Sources */,
+				184153E11D28A5E400FAB950 /* HNUtils.m in Sources */,
 				43E639A41C71D24100A5E14E /* HNReplyViewController.m in Sources */,
 				438A981F1C4F23E500AFF433 /* main.m in Sources */,
 			);
@@ -580,6 +608,7 @@
 				437FDE5B1C58A10B00B13580 /* es */,
 			);
 			name = DZNWebViewController.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 		438A982B1C4F23E500AFF433 /* LaunchScreen.storyboard */ = {
@@ -588,6 +617,7 @@
 				438A982C1C4F23E500AFF433 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -685,40 +715,40 @@
 		};
 		438A98321C4F23E500AFF433 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0CA40DE202D60E77F338FB4 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 89421CFEB16E687E54A5CAE3 /* Pods-HIKNS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = HIKNS/HNPrefix.pch;
-				INFOPLIST_FILE = HIKNS/Info.plist;
+				GCC_PREFIX_HEADER = "HIKNS/Supporting Files/HNPrefix.pch";
+				INFOPLIST_FILE = "HIKNS/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNSI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.HIKNSI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		438A98331C4F23E500AFF433 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6116424DF9DDE518850E3AA /* Pods.release.xcconfig */;
+			baseConfigurationReference = BA68DB03E4F698464ACDFD9E /* Pods-HIKNS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = HIKNS/HNPrefix.pch;
-				INFOPLIST_FILE = HIKNS/Info.plist;
+				GCC_PREFIX_HEADER = "HIKNS/Supporting Files/HNPrefix.pch";
+				INFOPLIST_FILE = "HIKNS/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.ha.HIKNSI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cysu.1077.HIKNSI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
