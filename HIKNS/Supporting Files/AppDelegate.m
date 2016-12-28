@@ -16,8 +16,6 @@
 #import "HNDataBaseManager.h"
 #import "HNCenterViewController.h"
 #import "HNLeftViewController.h"
-
-#import "GTScrollNavigationBar.h"
 #import "HNLaunchService.h"
 @interface AppDelegate ()
 
@@ -42,8 +40,9 @@
 - (IIViewDeckController*)generateControllerStack {
     HNLeftViewController* leftController = [[HNLeftViewController alloc] init];
     UIViewController *centerController = [[HNCenterViewController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithNavigationBarClass:[GTScrollNavigationBar class]
-                                                  toolbarClass:nil];
+//    UINavigationController *navController = [[UINavigationController alloc] initWithNavigationBarClass:[GTScrollNavigationBar class]
+//                                                  toolbarClass:nil];
+    UINavigationController *navController = [[UINavigationController alloc] init];
     [navController setViewControllers:@[centerController] animated:NO];
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:navController
                                                                                     leftViewController:leftController

@@ -8,8 +8,7 @@
 
 #import "HNCommentViewController.h"
 #import <NSDate+TimeAgo.h>
-#import <UIView+Positioning/UIView+Positioning.h>
-#import <TLYShyNavBar/TLYShyNavBarManager.h>
+#import "UIView+Positioning.h"
 #import "HNCommentViewCell.h"
 #import "HNCommentTitleCell.h"
 #import "HNRequestManager.h"
@@ -50,7 +49,7 @@ static NSString *const kPlaceHolderCellIdentifier = @"kPlaceHolderCellIdentifier
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kPlaceHolderCellIdentifier];
     self.tableView.estimatedRowHeight = 600;
     self.tableView.allowsSelection = NO;
-    self.shyNavBarManager.scrollView = self.tableView;
+//    self.shyNavBarManager.scrollView = self.tableView;
     [self requestData];
 }
 

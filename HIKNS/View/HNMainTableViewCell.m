@@ -8,7 +8,7 @@
 
 #import "HNMainTableViewCell.h"
 #import <NSDate+TimeAgo.h>
-#import <UIView+Positioning.h>
+#import "UIView+Positioning.h"
 
 @implementation HNMainTableViewCell
 

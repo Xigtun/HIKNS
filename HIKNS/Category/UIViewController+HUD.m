@@ -41,11 +41,12 @@ const char *kHudKey = "ProgressHUD_Key";
 
 - (void)hideHud
 {
-    if (!self.progressHud.taskInProgress) {
-        return;
-    }
-    self.progressHud.taskInProgress = NO;
-    [self.progressHud hide:YES];
+//    if (!self.progressHud.taskInProgress) {
+//        return;
+//    }
+//    self.progressHud.taskInProgress = NO;
+//    [self.progressHud hide:YES];
+    [self.progressHud hideAnimated:YES];
     self.progressHud = nil;
 }
 
@@ -64,30 +65,31 @@ const char *kHudKey = "ProgressHUD_Key";
 #pragma mark - Private
 - (void)showHudWithMessage:(NSString *)message model:(MBProgressHUDMode)mode
 {
-    if (self.progressHud.taskInProgress) {
-        return;
-    }
-    
-    self.progressHud.taskInProgress = YES;
+//    if (self.progressHud.taskInProgress) {
+//        return;
+//    }
+//    
+//    self.progressHud.taskInProgress = YES;
     self.progressHud.mode = mode ?: MBProgressHUDModeIndeterminate;
-    self.progressHud.labelText = message;
-    self.progressHud.labelFont = [UIFont systemFontOfSize:15];
-    [self.progressHud show:YES];
-    [self.progressHud hide:YES afterDelay:15];
+    self.progressHud.label.text = message;
+    self.progressHud.label.font = [UIFont systemFontOfSize:15];
+//    [self.progressHud show:YES];
+    [self.progressHud showAnimated:YES];
+    [self.progressHud hideAnimated:YES afterDelay:15];
+//    [self.progressHud hide:YES afterDelay:15];
 }
 
 - (void)hideHudWithMessage:(NSString *)message image:(UIImage *)image
 {
-    if (self.progressHud.taskInProgress) {
-        return;
-    }
+//    if (self.progressHud.taskInProgress) {
+//        return;
+//    }
 
     self.progressHud.customView = [[UIImageView alloc] initWithImage:image];
     self.progressHud.mode = MBProgressHUDModeCustomView;
-    self.progressHud.labelText = message;
-    self.progressHud.labelFont = [UIFont systemFontOfSize:15];
-    
-    [self.progressHud show:YES];
+    self.progressHud.label.text = message;
+    self.progressHud.label.font = [UIFont systemFontOfSize:15];
+    [self.progressHud showAnimated:YES];
     [self performSelector:@selector(hideHud) withObject:nil afterDelay:0.7];
 }
 

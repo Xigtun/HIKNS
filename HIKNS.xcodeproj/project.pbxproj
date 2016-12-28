@@ -10,9 +10,9 @@
 		184153DB1D28A07C00FAB950 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 184153D91D28A07C00FAB950 /* HexColors.m */; };
 		184153E11D28A5E400FAB950 /* HNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 184153E01D28A5E400FAB950 /* HNUtils.m */; };
 		184153E41D28AE9600FAB950 /* HNLaunchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 184153E31D28AE9600FAB950 /* HNLaunchService.m */; };
+		18ACF3761E09191200ACF6C8 /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ACF3731E09191200ACF6C8 /* UIView+Positioning.m */; };
 		434F0FF11C59B48300D22423 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 434F0FF01C59B48300D22423 /* TTTAttributedLabel.m */; };
 		437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */; };
-		437C2CB91C5725C100BD09EB /* GTScrollNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C2CB81C5725C100BD09EB /* GTScrollNavigationBar.m */; };
 		437C2D001C5779E900BD09EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 437C2CFF1C5779E900BD09EB /* WebKit.framework */; };
 		437FDE5C1C58A10B00B13580 /* DZNPolyActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 437FDE391C58A10B00B13580 /* DZNPolyActivity.m */; };
 		437FDE5D1C58A10B00B13580 /* DZNWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 437FDE3B1C58A10B00B13580 /* DZNWebView.m */; };
@@ -73,12 +73,12 @@
 		184153E01D28A5E400FAB950 /* HNUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNUtils.m; sourceTree = "<group>"; };
 		184153E21D28AE9600FAB950 /* HNLaunchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLaunchService.h; sourceTree = "<group>"; };
 		184153E31D28AE9600FAB950 /* HNLaunchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNLaunchService.m; sourceTree = "<group>"; };
+		18ACF3721E09191200ACF6C8 /* UIView+Positioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Positioning.h"; sourceTree = "<group>"; };
+		18ACF3731E09191200ACF6C8 /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
 		434F0FEF1C59B48300D22423 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		434F0FF01C59B48300D22423 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		437C2CB21C5612A900BD09EB /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		437C2CB31C5612A900BD09EB /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
-		437C2CB71C5725C100BD09EB /* GTScrollNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTScrollNavigationBar.h; sourceTree = "<group>"; };
-		437C2CB81C5725C100BD09EB /* GTScrollNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTScrollNavigationBar.m; sourceTree = "<group>"; };
 		437C2CFF1C5779E900BD09EB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		437FDE381C58A10B00B13580 /* DZNPolyActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNPolyActivity.h; sourceTree = "<group>"; };
 		437FDE391C58A10B00B13580 /* DZNPolyActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZNPolyActivity.m; sourceTree = "<group>"; };
@@ -198,6 +198,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		18ACF36F1E09191200ACF6C8 /* UIView+Positioning */ = {
+			isa = PBXGroup;
+			children = (
+				18ACF3721E09191200ACF6C8 /* UIView+Positioning.h */,
+				18ACF3731E09191200ACF6C8 /* UIView+Positioning.m */,
+			);
+			path = "UIView+Positioning";
+			sourceTree = "<group>";
+		};
 		434F0FEE1C59B48300D22423 /* TTTAttributedLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,15 +214,6 @@
 				434F0FF01C59B48300D22423 /* TTTAttributedLabel.m */,
 			);
 			path = TTTAttributedLabel;
-			sourceTree = "<group>";
-		};
-		437C2CB61C5725C100BD09EB /* GTScrollNavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				437C2CB71C5725C100BD09EB /* GTScrollNavigationBar.h */,
-				437C2CB81C5725C100BD09EB /* GTScrollNavigationBar.m */,
-			);
-			path = GTScrollNavigationBar;
 			sourceTree = "<group>";
 		};
 		437FDE361C58A10B00B13580 /* DZNWebViewController */ = {
@@ -378,8 +378,8 @@
 		438A98511C50761500AFF433 /* Vandor */ = {
 			isa = PBXGroup;
 			children = (
+				18ACF36F1E09191200ACF6C8 /* UIView+Positioning */,
 				437FDE361C58A10B00B13580 /* DZNWebViewController */,
-				437C2CB61C5725C100BD09EB /* GTScrollNavigationBar */,
 				434F0FEE1C59B48300D22423 /* TTTAttributedLabel */,
 			);
 			path = Vandor;
@@ -411,13 +411,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 438A98311C4F23E500AFF433 /* Build configuration list for PBXNativeTarget "HIKNS" */;
 			buildPhases = (
-				1DBFFB893B109C03CA7BC4DC /* 📦 Check Pods Manifest.lock */,
+				1DBFFB893B109C03CA7BC4DC /* [CP] Check Pods Manifest.lock */,
 				438A98161C4F23E500AFF433 /* Sources */,
 				438A98171C4F23E500AFF433 /* Frameworks */,
 				438A98181C4F23E500AFF433 /* Resources */,
 				437C2CB51C5711A700BD09EB /* ShellScript */,
-				CD124AF8E4B1E94E658DD7F3 /* 📦 Embed Pods Frameworks */,
-				D8C83994D598EF042C92B123 /* 📦 Copy Pods Resources */,
+				CD124AF8E4B1E94E658DD7F3 /* [CP] Embed Pods Frameworks */,
+				D8C83994D598EF042C92B123 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -507,19 +507,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1DBFFB893B109C03CA7BC4DC /* 📦 Check Pods Manifest.lock */ = {
+		1DBFFB893B109C03CA7BC4DC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		437C2CB51C5711A700BD09EB /* ShellScript */ = {
@@ -535,14 +535,14 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7d7661a878e0686532124c615ffc70b8484d111c 498ebd3d404d5f084373ae305059403c7c0f1ae595a31c4fcd2a5712b1ecdcbb";
 		};
-		CD124AF8E4B1E94E658DD7F3 /* 📦 Embed Pods Frameworks */ = {
+		CD124AF8E4B1E94E658DD7F3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,14 +550,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HIKNS/Pods-HIKNS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D8C83994D598EF042C92B123 /* 📦 Copy Pods Resources */ = {
+		D8C83994D598EF042C92B123 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,7 +574,6 @@
 			files = (
 				437C2CB41C5612A900BD09EB /* UIViewController+HUD.m in Sources */,
 				43E639A71C71D32700A5E14E /* HNReplyViewCell.m in Sources */,
-				437C2CB91C5725C100BD09EB /* GTScrollNavigationBar.m in Sources */,
 				438A984D1C4F7D9800AFF433 /* HNStoryModel.m in Sources */,
 				438A98921C5219F800AFF433 /* HNCommentViewCell.m in Sources */,
 				437FDE5C1C58A10B00B13580 /* DZNPolyActivity.m in Sources */,
@@ -593,6 +592,7 @@
 				437FDE5E1C58A10B00B13580 /* DZNWebViewController.m in Sources */,
 				184153E11D28A5E400FAB950 /* HNUtils.m in Sources */,
 				43E639A41C71D24100A5E14E /* HNReplyViewController.m in Sources */,
+				18ACF3761E09191200ACF6C8 /* UIView+Positioning.m in Sources */,
 				438A981F1C4F23E500AFF433 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

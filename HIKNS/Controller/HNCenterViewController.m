@@ -16,8 +16,7 @@
 #import "HNLeftViewController.h"
 #import "HNMainTableViewCell.h"
 #import "HNCommentViewController.h"
-#import "GTScrollNavigationBar.h"
-#import <UIView+Positioning/UIView+Positioning.h>
+#import "UIView+Positioning.h"
 #import "UIViewController+HUD.h"
 #import "DZNWebViewController.h"
 #import <objc/runtime.h>
@@ -50,6 +49,8 @@ const char *kViewControllerKey = "kViewControllerKey";
     [self setupLeftMenuButton];
     self.fd_prefersNavigationBarHidden = NO;
     self.view.backgroundColor = kMainBackgroundColor;
+    
+    
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,7 +68,7 @@ const char *kViewControllerKey = "kViewControllerKey";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.scrollNavigationBar.scrollView = self.tableView;
+//    self.navigationController.scrollNavigationBar.scrollView = self.tableView;
     self.viewDeckController.navigationController.toolbarHidden = YES;
     self.navigationController.toolbarHidden = YES;
 }
@@ -75,12 +76,12 @@ const char *kViewControllerKey = "kViewControllerKey";
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.navigationController.scrollNavigationBar.scrollView = nil;
+//    self.navigationController.scrollNavigationBar.scrollView = nil;
 }
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
 {
-    [self.navigationController.scrollNavigationBar resetToDefaultPositionWithAnimation:NO];
+//    [self.navigationController.scrollNavigationBar resetToDefaultPositionWithAnimation:NO];
 }
 
 #pragma mark - Refresh
@@ -256,9 +257,6 @@ const char *kViewControllerKey = "kViewControllerKey";
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
     [self.navigationController.view addSubview:self.filterView];
-//    [self.filterView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(self.view);
-//    }];
     
     self.filterView.alpha = 0;
     [UIView animateWithDuration:0.3 animations:^{
